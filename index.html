@@ -1,1 +1,668 @@
-meloşi,ko
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melisa İşimtekin Eczanesi</title>
+<meta name="description" content="Melisa İşimtekin Eczanesi – Girne. Arayın, yol tarifi alın, WhatsApp'tan yazın.">
+<meta name="theme-color" content="#EFF4FC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --blue:#008BD0;
+  --blue-deep:#0071AB;
+  --blue-tint:#E3F1FA;
+  --peri:#9A99E1;
+  --peri-deep:#6C6BC6;
+  --peri-tint:#EDEDFA;
+  --orchid:#DCBDDF;
+  --orchid-deep:#A874AE;
+  --orchid-tint:#F7EDF7;
+  --title:#33325B;
+  --ink:#26253C;
+  --ink-soft:#565470;
+  --line:#E9E5EE;
+  --radius:20px;
+  --shadow:0 6px 20px rgba(51,50,91,.07);
+  --shadow-lg:0 14px 34px rgba(51,50,91,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(620px 320px at 50% -130px, rgba(154,153,225,.18), transparent 72%),
+    linear-gradient(104deg,#FCFDFF 0%, #DFEAFA 27%, #F2EFF3 58%, #FAF1E6 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+  line-height:1.5;
+}
+.wrap{max-width:460px;margin:0 auto;padding:14px 16px 40px;position:relative}
+
+/* ---------- ambient melissa leaves ---------- */
+.leaves{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.leaves svg{position:absolute;animation:drift linear infinite}
+@keyframes drift{
+  0%{transform:translateY(-12vh) rotate(0deg)}
+  100%{transform:translateY(112vh) rotate(210deg)}
+}
+
+/* ---------- language toggle ---------- */
+.lang{
+  position:absolute;top:8px;right:0;z-index:6;
+  display:flex;gap:1px;background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;padding:2px;
+  box-shadow:var(--shadow);
+}
+.lang button{
+  border:0;background:transparent;cursor:pointer;transition:.22s;
+  display:flex;align-items:center;gap:4px;
+  font:600 9.5px 'DM Sans';letter-spacing:.08em;color:var(--ink-soft);
+  padding:3px 7px;border-radius:999px;
+}
+.lang button svg{width:12px;height:8px;border-radius:1px;display:block}
+.lang button.on{background:var(--blue);color:#fff}
+
+/* ---------- masthead ---------- */
+header{position:relative;z-index:1;text-align:center;padding:20px 0 4px;animation:rise .7s both}
+.sprig{width:98px;height:98px;margin:0 auto;display:block;
+  animation:sway 7s ease-in-out infinite;transform-origin:50% 95%}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.sprig .stem-p{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.5s .1s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.sprig .lf,.sprig .fl{opacity:0;transform-origin:center;animation:pop .55s ease forwards}
+@keyframes pop{from{opacity:0;transform:scale(.35)}to{opacity:1;transform:scale(1)}}
+
+h1{
+  font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:32px;line-height:1.12;
+  letter-spacing:-.018em;color:var(--title);margin-top:8px;
+  animation:rise .7s .18s both;
+}
+.eyebrow{
+  display:flex;align-items:center;justify-content:center;gap:11px;margin-top:9px;
+  font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--peri-deep);animation:rise .7s .26s both;
+}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;width:36px;background:linear-gradient(90deg,transparent,var(--peri))}
+.eyebrow::after{background:linear-gradient(90deg,var(--peri),transparent)}
+
+.status{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;
+  padding:7px 16px;font-size:13px;font-weight:700;box-shadow:var(--shadow);
+  animation:rise .7s .34s both;
+}
+.dot{width:7px;height:7px;border-radius:50%;position:relative;flex:none}
+.dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;animation:pulse 2.2s ease-out infinite}
+.open .dot{background:var(--blue)}.open .dot::after{background:rgba(0,139,208,.28)}
+.open{color:#0071AB}
+.closed .dot{background:#C4718F}.closed .dot::after{background:rgba(196,113,143,.3)}
+.closed{color:#A85578}
+@keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.7);opacity:0}}
+.status-sub{margin-top:8px;font-size:12.5px;font-weight:500;color:var(--ink-soft);animation:rise .7s .4s both}
+.status-sub b{font-weight:700;color:var(--blue-deep)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ---------- review invitation ---------- */
+main{position:relative;z-index:1;margin-top:16px}
+.invite{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  animation:rise .6s .46s both;transition:transform .2s,box-shadow .2s;
+}
+.invite::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+  background:linear-gradient(180deg,var(--peri) 0%,var(--blue) 52%,var(--orchid) 100%);
+}
+.invite:active{transform:scale(.985)}
+@media(hover:hover){.invite:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}}
+.gmark{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--title)}
+.gmark svg{width:16px;height:16px;display:block}
+.invite h2{
+  font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:21.5px;
+  color:var(--title);margin:9px 0 6px;letter-spacing:-.012em;line-height:1.22;
+}
+.stars{color:#E0A64C;font-size:15px;letter-spacing:4px;line-height:1;margin-bottom:9px}
+.invite p{font-size:13px;font-weight:500;color:var(--ink-soft);line-height:1.6}
+.gbtn{
+  margin-top:15px;display:inline-flex;align-items:center;gap:9px;
+  background:var(--blue);color:#fff;font-weight:600;font-size:13.5px;
+  padding:11px 18px;border-radius:999px;
+}
+.gbtn .glogo{width:17px;height:17px;background:#fff;border-radius:50%;display:grid;place-items:center;flex:none}
+.gbtn .glogo svg{width:11px;height:11px}
+.gbtn i{font-style:normal;color:var(--peri)}
+
+/* ---------- action stack ---------- */
+.stack{
+  margin-top:12px;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+  animation:rise .6s .54s both;
+}
+.stack-head{
+  display:flex;align-items:center;gap:10px;padding:15px 18px 10px;
+  font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--peri-deep);
+}
+.stack-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.row{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  padding:13px 18px;text-decoration:none;color:inherit;cursor:pointer;
+  background:transparent;border:0;border-top:1px solid var(--line);
+  font:inherit;transition:background .2s;
+}
+.row:active{background:var(--blue-tint)}
+@media(hover:hover){.row:hover{background:#FAF9FE}.row:hover .chev{transform:translateX(3px)}}
+.med{
+  flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:var(--blue);color:#fff;position:relative;
+}
+.med svg{width:19px;height:19px;display:block}
+.med::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--blue-tint)}
+.med.wa{background:#25D366}
+.med.wa::after{border-color:#CFEFDF}
+.med.ig{background:linear-gradient(45deg,#F9CE34 0%,#EE2A7B 48%,#6228D7 100%)}
+.med.ig::after{border-color:#F8DEE9}
+.med.sg{background:var(--orchid-deep)}
+.med.sg::after{border-color:var(--orchid-tint)}
+.med.hn{background:var(--peri);color:#fff}
+.med.hn::after{border-color:var(--peri-tint)}
+.row-txt{min-width:0;flex:1}
+.row-txt b{display:block;font-size:14.5px;font-weight:700}
+.row-txt span{display:block;font-size:12.5px;font-weight:500;color:var(--ink-soft);margin-top:2px}
+.chev{flex:none;color:var(--peri-deep);font-size:17px;line-height:1;transition:transform .2s}
+
+/* ---------- bank details ---------- */
+.bank{border-top:1px solid var(--line);padding:13px 18px 15px;background:linear-gradient(180deg,#FAF9FE,var(--paper))}
+.bank-head{
+  display:flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--peri-deep);margin-bottom:9px;
+}
+.bank-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.holder{margin-bottom:9px}
+.holder .k{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--peri-deep)}
+.holder .v{display:block;font-size:15px;font-weight:700;color:var(--title);margin-top:2px}
+.iban-box{
+  display:flex;align-items:center;gap:8px;
+  background:var(--peri-tint);border:1px solid #DCDBF4;border-radius:12px;padding:7px 7px 7px 11px;
+}
+.iban-num{
+  flex:1;min-width:0;font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#2B2A63;word-break:break-all;line-height:1.4;
+}
+.copy-btn{
+  flex:none;width:34px;height:34px;border:0;border-radius:9px;background:var(--blue);
+  color:#fff;display:grid;place-items:center;cursor:pointer;transition:.2s;
+}
+.copy-btn svg{width:15px;height:15px}
+.copy-btn:active{transform:scale(.92)}
+@media(hover:hover){.copy-btn:hover{background:var(--blue-deep)}}
+.notice{display:flex;gap:6px;font-size:11px;font-weight:500;line-height:1.5;color:var(--ink-soft);margin-top:9px}
+.notice svg{width:12px;height:12px;flex:none;margin-top:1px;color:var(--orchid-deep)}
+
+/* ---------- blocks ---------- */
+.block{
+  margin-top:12px;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;
+  animation:rise .6s .62s both;
+}
+.block-title{
+  display:flex;align-items:center;gap:10px;
+  font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--peri-deep);
+}
+.block-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.livebar{
+  display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  padding:9px 12px;border-radius:11px;margin:10px 0 4px;
+}
+.livebar.open{background:var(--orchid-tint);color:#4E7A5E}
+.livebar.closed{background:#FAEEF3;color:#A85578}
+.hours{list-style:none}
+.hours li{display:flex;align-items:baseline;gap:8px;font-size:13.5px;font-weight:500;padding:7px 10px;border-radius:9px;color:var(--ink-soft)}
+.hours li b{font-weight:700;color:var(--ink);flex:none}
+.hours .leader{flex:1;border-bottom:1px dotted #E0DBEE;transform:translateY(-4px)}
+.hours .t{flex:none;font-variant-numeric:tabular-nums}
+.hours li.today{background:var(--blue-tint);color:var(--title);box-shadow:inset 2px 0 0 var(--blue)}
+.hours li.today b{color:var(--title)}
+.hours li .cl{color:#A85578;font-weight:600;letter-spacing:.08em;font-size:11.5px}
+
+.map{padding:7px}
+.map iframe{width:100%;height:225px;border:0;border-radius:14px;display:block}
+
+/* ---------- footer ---------- */
+footer{position:relative;z-index:1;text-align:center;margin-top:22px;font-size:11.5px;font-weight:500;color:var(--ink-soft);animation:rise .6s .8s both}
+.leafline{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:9px}
+.leafline span{height:1px;width:42px;background:linear-gradient(90deg,transparent,var(--peri))}
+.leafline span:last-child{background:linear-gradient(90deg,var(--peri),transparent)}
+.leafline svg{width:15px;height:15px;color:var(--orchid)}
+footer .addr{color:var(--blue-deep);font-weight:500;font-size:12px}
+footer .cp{margin-top:5px;letter-spacing:.03em}
+
+/* ---------- toast ---------- */
+#toast{
+  position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(90px);
+  background:var(--title);color:#fff;font-size:13px;font-weight:600;
+  padding:11px 20px;border-radius:999px;box-shadow:var(--shadow-lg);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2);z-index:50;white-space:nowrap;
+}
+#toast.show{transform:translateX(-50%) translateY(0)}
+
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  header,h1,.eyebrow,.status,.status-sub,.invite,.stack,.block,footer{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="leaves" aria-hidden="true" id="leaves"></div>
+
+<div class="wrap">
+
+  <div class="lang" role="group" aria-label="Dil / Language">
+    <button id="btnTR" class="on" onclick="setLang('tr')" aria-label="Türkçe">
+      <svg viewBox="0 0 18 12" aria-hidden="true">
+        <rect width="18" height="12" fill="#E30A17"/>
+        <circle cx="7" cy="6" r="3" fill="#fff"/>
+        <circle cx="8.2" cy="6" r="2.4" fill="#E30A17"/>
+        <polygon fill="#fff" points="11.9,4.5 12.253,5.515 13.327,5.536 12.471,6.185 12.782,7.213 11.9,6.6 11.018,7.213 11.329,6.185 10.473,5.536 11.547,5.515"/>
+      </svg>TR</button>
+    <button id="btnEN" onclick="setLang('en')" aria-label="English">
+      <svg viewBox="0 0 18 12" aria-hidden="true">
+        <rect width="18" height="12" fill="#012169"/>
+        <path d="M0,0 18,12 M18,0 0,12" stroke="#fff" stroke-width="2.4"/>
+        <path d="M0,0 18,12 M18,0 0,12" stroke="#C8102E" stroke-width="1.2"/>
+        <path d="M9,0 V12 M0,6 H18" stroke="#fff" stroke-width="3.6"/>
+        <path d="M9,0 V12 M0,6 H18" stroke="#C8102E" stroke-width="2"/>
+      </svg>EN</button>
+  </div>
+
+  <header>
+    <!-- melisa (lemon balm) sprig -->
+    <svg class="sprig" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <path class="stem-p" d="M60 112 C60 88 58 66 60 42 C61 30 62 22 60 12" stroke="#9A99E1" stroke-width="2.6" stroke-linecap="round"/>
+      <g class="lf" style="animation-delay:.45s"><path d="M60 96 C44 96 34 88 30 76 C44 74 58 82 60 96Z" fill="#9A99E1"/><path d="M60 96 C50 90 42 84 38 78" stroke="#6C6BC6" stroke-width="1.2" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.55s"><path d="M60 96 C76 96 86 88 90 76 C76 74 62 82 60 96Z" fill="#B0AFEA"/><path d="M60 96 C70 90 78 84 82 78" stroke="#6C6BC6" stroke-width="1.2" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.66s"><path d="M59 70 C45 70 36 63 33 53 C45 51 57 58 59 70Z" fill="#B0AFEA"/><path d="M59 70 C51 65 44 60 41 55" stroke="#6C6BC6" stroke-width="1.1" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.76s"><path d="M61 70 C75 70 84 63 87 53 C75 51 63 58 61 70Z" fill="#9A99E1"/><path d="M61 70 C69 65 76 60 79 55" stroke="#6C6BC6" stroke-width="1.1" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.86s"><path d="M59 46 C48 46 41 40 39 32 C49 31 58 37 59 46Z" fill="#C4C3F2"/></g>
+      <g class="lf" style="animation-delay:.94s"><path d="M61 46 C72 46 79 40 81 32 C71 31 62 37 61 46Z" fill="#B0AFEA"/></g>
+      <g class="fl" style="animation-delay:1.04s">
+        <circle cx="60" cy="12" r="5" fill="#F7EDF7" stroke="#C79FCB" stroke-width="1"/>
+        <circle cx="60" cy="12" r="1.8" fill="#008BD0"/>
+      </g>
+      <g class="fl" style="animation-delay:1.14s">
+        <circle cx="51" cy="20" r="4" fill="#FCF6FC" stroke="#C79FCB" stroke-width="1"/>
+        <circle cx="51" cy="20" r="1.4" fill="#008BD0"/>
+      </g>
+      <g class="fl" style="animation-delay:1.22s">
+        <circle cx="69" cy="21" r="4" fill="#FCF6FC" stroke="#C79FCB" stroke-width="1"/>
+        <circle cx="69" cy="21" r="1.4" fill="#008BD0"/>
+      </g>
+    </svg>
+
+    <h1>Melisa İşimtekin</h1>
+    <div class="eyebrow" data-i="pharmacy">ECZANE</div>
+    <div class="status" id="status"><span class="dot"></span><span id="statusTxt"></span></div>
+    <div class="status-sub" id="statusSub"></div>
+  </header>
+
+  <main>
+
+    <!-- review invitation -->
+    <a class="invite" href="https://search.google.com/local/writereview?placeid=ChIJZQPC-hFt3hQRPyTMgRQCwx8" target="_blank" rel="noopener">
+      <div class="gmark">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#34A853" d="M12 24s2.2-3.1 4-6.1l-4-3.4-3.9 3.3C9.9 20.9 12 24 12 24z"/>
+          <path fill="#FBBC04" d="M4.9 14.3 12 20.2l3.1-5.6-3.1-2.9z"/>
+          <path fill="#4285F4" d="M19.1 14.3c.6-1.2.9-2.4.9-3.6 0-1.6-.4-3-1.2-4.2l-6.8 8 3.1 2.6c1.6-1.1 3.1-2 4-2.8z"/>
+          <path fill="#EA4335" d="M12 0C8.6 0 5.6 1.9 4.2 4.9l3.4 2.9C8.5 6 10.1 4.9 12 4.9c1.5 0 2.8.6 3.8 1.5L18.8 3C17 1.1 14.7 0 12 0z"/>
+          <path fill="#1A73E8" d="M4.2 4.9C3.2 6.6 2.9 8.4 3.1 10.2c.2 1.6.9 3 1.8 4.1l5-5.9c-.7-.4-1.5-.6-2.3-.6-1 0-2 .3-2.8.9L4.2 4.9z"/>
+          <circle cx="12" cy="9.6" r="2.7" fill="#FFF"/>
+        </svg>
+        <span data-i="gmark">GOOGLE İŞLETME PROFİLİ</span>
+      </div>
+      <h2 data-i="reviewTitle">Deneyiminizi bizimle paylaşın</h2>
+      <div class="stars">★★★★★</div>
+      <p data-i="reviewSub">Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.</p>
+      <div class="gbtn">
+        <span class="glogo">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.5 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.53 5.53 0 01-2.4 3.63v3h3.88c2.27-2.09 3.55-5.17 3.55-8.87z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.95-2.91l-3.88-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.26v3.09A12 12 0 0012 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.29a7.2 7.2 0 010-4.58V6.62H1.26a12 12 0 000 10.76l4.01-3.09z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 001.26 6.62l4.01 3.09C6.22 6.86 8.87 4.75 12 4.75z"/>
+          </svg>
+        </span>
+        <span data-i="reviewBtn">Google'da değerlendirin</span><i>→</i>
+      </div>
+    </a>
+
+    <!-- contact stack -->
+    <section class="stack">
+      <div class="stack-head" data-i="contactHead">İLETİŞİM</div>
+
+      <a class="row" href="tel:+905338453737">
+        <span class="med" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </span>
+        <span class="row-txt"><b data-i="call">Bizi arayın</b><span>0533 845 37 37</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </a>
+
+      <a class="row" href="https://wa.me/message/HW5ZDPIMJCX6F1" target="_blank" rel="noopener">
+        <span class="med wa" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </span>
+        <span class="row-txt"><b>WhatsApp</b><span data-i="waSub">Sorularınızı mesajla iletin</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </a>
+
+      <a class="row" href="https://www.instagram.com/eczmelisaisimtekin?igsh=MTgxdm14NHM0YzFxNg%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+        <span class="med ig" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.688.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+        </span>
+        <span class="row-txt"><b>Instagram</b><span data-i="igSub">Bizi keşfedin: yenilikler, doğal ürünler ve sağlık önerileri</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </a>
+
+      <a class="row" href="https://maps.app.goo.gl/J6xCfDkrtRgvEufeA?g_st=ic" target="_blank" rel="noopener">
+        <span class="med sg" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        </span>
+        <span class="row-txt"><b data-i="dir">Yol tarifi</b><span data-i="dirSub">Uğur Mumcu Caddesi, Karakum – Girne</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </a>
+
+      <button class="row" type="button" onclick="saveContact()">
+        <span class="med hn" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zM9 8a2 2 0 110 4 2 2 0 010-4zm4 9H5v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1zm6-2h-4v-1.5h4V15zm0-3h-4v-1.5h4V12zm0-3h-4V7.5h4V9z"/></svg>
+        </span>
+        <span class="row-txt"><b data-i="vcard">Rehbere kaydet</b><span data-i="vcardSub">Tek dokunuşla telefonunuza ekleyin</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <!-- bank details -->
+      <div class="bank">
+        <div class="bank-head" data-i="bankHead">BANKA BİLGİLERİ</div>
+        <div class="holder">
+          <span class="k" data-i="holder">Hesap sahibi</span>
+          <span class="v">Melisa İşimtekin</span>
+        </div>
+        <div class="iban-box">
+          <span class="iban-num">TR95 0006 4000 0016 8110 2350 81</span>
+          <button class="copy-btn" type="button" onclick="copyIban()" aria-label="IBAN">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+        <div class="notice">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg>
+          <span data-i="bankNote">Ödeme yapmadan önce hesap adı ve IBAN bilgilerini kontrol etmenizi rica ederiz.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- hours -->
+    <section class="block">
+      <div class="block-title" data-i="hoursTitle">ÇALIŞMA SAATLERİ</div>
+      <div class="livebar" id="liveBar"><span class="dot"></span><span id="liveTxt"></span></div>
+      <ul class="hours" id="hoursList"></ul>
+    </section>
+
+    <!-- map -->
+    <section class="block map">
+      <iframe
+        title="Harita"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Melisa%20%C4%B0%C5%9Fimtekin%20Eczanesi%2C%20U%C4%9Fur%20Mumcu%20Caddesi%2C%20Karakum%2C%20Girne&z=16&output=embed">
+      </iframe>
+    </section>
+  </main>
+
+  <footer>
+    <div class="leafline">
+      <span></span>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22C4 16 4 6 12 2c8 4 8 14 0 20z"/></svg>
+      <span></span>
+    </div>
+    <div class="addr" data-i="addr">Uğur Mumcu Caddesi, Karakum 99320, Girne</div>
+    <div class="cp">© <span id="yr"></span> Melisa İşimtekin <span data-i="pharmacy2">Eczanesi</span></div>
+  </footer>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script>
+/* ================= i18n ================= */
+const T = {
+  tr:{
+    pharmacy:"ECZANE", pharmacy2:"Eczanesi",
+    open:"Şu an açık", closed:"Şu an kapalı",
+    gmark:"GOOGLE İŞLETME PROFİLİ",
+    reviewTitle:"Deneyiminizi bizimle paylaşın",
+    reviewSub:"Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.",
+    reviewBtn:"Google'da değerlendirin",
+    contactHead:"İLETİŞİM",
+    call:"Bizi arayın",
+    waSub:"Sorularınızı mesajla iletin",
+    igSub:"Bizi keşfedin: yenilikler, doğal ürünler ve sağlık önerileri",
+    dir:"Yol tarifi", dirSub:"Uğur Mumcu Caddesi, Karakum – Girne",
+    vcard:"Rehbere kaydet", vcardSub:"Tek dokunuşla telefonunuza ekleyin",
+    bankHead:"BANKA BİLGİLERİ", holder:"Hesap sahibi",
+    bankNote:"Ödeme yapmadan önce hesap adı ve IBAN bilgilerini kontrol etmenizi rica ederiz.",
+    hoursTitle:"ÇALIŞMA SAATLERİ",
+    days:["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"],
+    closedDay:"KAPALI",
+    copied:"IBAN kopyalandı", copyFail:"Kopyalanamadı, lütfen elle seçin",
+    saved:"Kişi kartı indirildi",
+    addr:"Uğur Mumcu Caddesi, Karakum 99320, Girne"
+  },
+  en:{
+    pharmacy:"PHARMACY", pharmacy2:"Pharmacy",
+    open:"Open now", closed:"Closed now",
+    gmark:"GOOGLE BUSINESS PROFILE",
+    reviewTitle:"Share your experience with us",
+    reviewSub:"If you were happy with our service, a short review on Google means a great deal to us and helps more people find the pharmacy.",
+    reviewBtn:"Leave a Google review",
+    contactHead:"CONTACT",
+    call:"Call us",
+    waSub:"Send us your questions",
+    igSub:"Discover us: new arrivals, natural products and health tips",
+    dir:"Directions", dirSub:"Uğur Mumcu Street, Karakum – Kyrenia",
+    vcard:"Save to contacts", vcardSub:"Add us to your phone in one tap",
+    bankHead:"BANK DETAILS", holder:"Account holder",
+    bankNote:"Please check the account name and IBAN before making any payment.",
+    hoursTitle:"OPENING HOURS",
+    days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    closedDay:"CLOSED",
+    copied:"IBAN copied", copyFail:"Copy failed, please select manually",
+    saved:"Contact card downloaded",
+    addr:"Uğur Mumcu Street, Karakum 99320, Kyrenia"
+  }
+};
+let lang = "tr";
+
+/* hours: 0 = Monday ... 6 = Sunday; null = closed */
+const HOURS = [
+  ["08:00","17:30"],
+  ["08:00","17:30"],
+  ["08:00","17:30"],
+  ["08:00","13:30"],
+  ["08:00","17:30"],
+  ["08:00","13:30"],
+  null
+];
+
+const HR_SUF = {0:"da",1:"de",2:"de",3:"te",4:"te",5:"te",6:"da",7:"de",8:"de",9:"da",10:"da",11:"de",
+                12:"de",13:"te",14:"te",15:"te",16:"da",17:"de",18:"de",19:"da",20:"de",21:"de",22:"de",23:"te"};
+function trAt(t){
+  const [h,m] = t.split(":").map(Number);
+  return t + "'" + (m === 0 ? HR_SUF[h] : "da");
+}
+
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.getElementById("btnTR").classList.toggle("on", l === "tr");
+  document.getElementById("btnEN").classList.toggle("on", l === "en");
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const k = el.getAttribute("data-i");
+    if (T[l][k]) el.textContent = T[l][k];
+  });
+  renderHours();
+  renderStatus();
+}
+
+function nowLocal(){
+  return new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Istanbul"}));
+}
+const toMin = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
+
+function state(){
+  const n = nowLocal();
+  const dayIdx = (n.getDay()+6)%7;
+  const mins = n.getHours()*60 + n.getMinutes();
+  const t = T[lang];
+  const today = HOURS[dayIdx];
+  let isOpen = false, detail = "";
+
+  if (today && mins >= toMin(today[0]) && mins < toMin(today[1])){
+    isOpen = true;
+    detail = lang === "tr" ? trAt(today[1]) + " kapanıyor" : "closes at " + today[1];
+  } else if (today && mins < toMin(today[0])){
+    detail = lang === "tr" ? trAt(today[0]) + " açılıyor" : "opens at " + today[0];
+  } else {
+    for (let i=1;i<=7;i++){
+      const idx = (dayIdx+i)%7;
+      if (HOURS[idx]){
+        const when = (i === 1) ? (lang === "tr" ? "yarın" : "tomorrow") : t.days[idx];
+        detail = lang === "tr"
+          ? when + " " + trAt(HOURS[idx][0]) + " açılıyor"
+          : "opens " + when.toLowerCase() + " at " + HOURS[idx][0];
+        break;
+      }
+    }
+  }
+  return { isOpen, dayName: t.days[dayIdx], detail };
+}
+
+function renderStatus(){
+  const s = state();
+  const t = T[lang];
+  const pill = document.getElementById("status");
+  pill.className = "status " + (s.isOpen ? "open" : "closed");
+  document.getElementById("statusTxt").textContent = s.isOpen ? t.open : t.closed;
+  document.getElementById("statusSub").innerHTML = "<b>" + s.dayName + "</b> · " + s.detail;
+
+  const bar = document.getElementById("liveBar");
+  bar.className = "livebar " + (s.isOpen ? "open" : "closed");
+  document.getElementById("liveTxt").textContent = (s.isOpen ? t.open : t.closed) + " · " + s.detail;
+}
+
+function renderHours(){
+  const dayIdx = (nowLocal().getDay()+6)%7;
+  const t = T[lang];
+  const ul = document.getElementById("hoursList");
+  ul.innerHTML = "";
+  t.days.forEach((d,i)=>{
+    const li = document.createElement("li");
+    if (i === dayIdx) li.classList.add("today");
+    const time = HOURS[i]
+      ? `<span class="t">${HOURS[i][0]} – ${HOURS[i][1]}</span>`
+      : `<span class="t cl">${t.closedDay}</span>`;
+    li.innerHTML = `<b>${d}</b><span class="leader"></span>${time}`;
+    ul.appendChild(li);
+  });
+}
+
+/* ---- IBAN copy ---- */
+const IBAN = "TR950006400000168110235081";
+function copyIban(){
+  const done = ()=>toast(T[lang].copied);
+  const fail = ()=>toast(T[lang].copyFail);
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(IBAN).then(done).catch(()=> fallbackCopy() ? done() : fail());
+  } else {
+    fallbackCopy() ? done() : fail();
+  }
+}
+function fallbackCopy(){
+  try{
+    const ta = document.createElement("textarea");
+    ta.value = IBAN; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return ok;
+  }catch(e){ return false; }
+}
+
+/* ---- vCard ---- */
+function saveContact(){
+  const vcf =
+`BEGIN:VCARD
+VERSION:3.0
+N:İşimtekin;Melisa;;;
+FN:Melisa İşimtekin Eczanesi
+ORG:Melisa İşimtekin Eczanesi
+TEL;TYPE=CELL:+905338453737
+ADR;TYPE=WORK:;;Uğur Mumcu Caddesi;Karakum;Girne;99320;
+URL:https://www.instagram.com/eczmelisaisimtekin
+END:VCARD`;
+  const blob = new Blob([vcf],{type:"text/vcard;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Melisa-Isimtekin-Eczanesi.vcf";
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  toast(T[lang].saved);
+}
+
+/* ---- toast ---- */
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove("show"), 2400);
+}
+
+/* ---- ambient leaves & melissa blossoms ---- */
+(function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const host = document.getElementById("leaves");
+  const tones = ["#9A99E1","#B0AFEA","#DCBDDF","#008BD0"];
+  let html = "";
+  for (let i=0;i<20;i++){
+    const s = 11 + Math.round(Math.random()*15);
+    const x = Math.round(Math.random()*97);
+    const d = 16 + Math.round(Math.random()*20);
+    const dl = -Math.round(Math.random()*30);
+    const op = (0.18 + Math.random()*0.22).toFixed(2);
+    const c = tones[Math.floor(Math.random()*tones.length)];
+    const blossom = i % 5 === 0;
+    const shape = blossom
+      ? `<g><circle cx="12" cy="12" r="6" fill="#F7EDF7"/><circle cx="12" cy="12" r="2.2" fill="#008BD0"/></g>`
+      : `<g><path d="M12 22 C4 16 4 6 12 2 C20 6 20 16 12 22Z" fill="${c}"/><path d="M12 4 L12 20" stroke="#6C6BC6" stroke-width="1" opacity=".5"/></g>`;
+    html += `<svg width="${s}" height="${s}" viewBox="0 0 24 24" style="left:${x}%;opacity:${op};animation-duration:${d}s;animation-delay:${dl}s">${shape}</svg>`;
+  }
+  host.innerHTML = html;
+})();
+
+/* ---- init ---- */
+document.getElementById("yr").textContent = nowLocal().getFullYear();
+(function(){
+  const primary = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+  setLang(primary.toLowerCase().startsWith("tr") ? "tr" : "en");
+})();
+setInterval(renderStatus, 60000);
+</script>
+</body>
+</html>
