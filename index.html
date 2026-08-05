@@ -5,29 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Melisa İşimtekin Eczanesi</title>
 <meta name="description" content="Melisa İşimtekin Eczanesi – Girne. Arayın, yol tarifi alın, WhatsApp'tan yazın.">
-<meta name="theme-color" content="#EFF4FC">
+<meta name="theme-color" content="#EFF1E5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#FFFFFF;
-  --blue:#008BD0;
-  --blue-deep:#0071AB;
-  --blue-tint:#E3F1FA;
-  --peri:#9A99E1;
-  --peri-deep:#6C6BC6;
-  --peri-tint:#EDEDFA;
-  --orchid:#DCBDDF;
-  --orchid-deep:#A874AE;
-  --orchid-tint:#F7EDF7;
-  --title:#33325B;
-  --ink:#26253C;
-  --ink-soft:#565470;
-  --line:#E9E5EE;
+  --paper:#FCFAF1;
+  --green:#2E7D4F;
+  --green-deep:#1B5A38;
+  --green-ink:#123D26;
+  --green-tint:#ECF6EF;
+  --gold:#F3CF67;
+  --gold-deep:#C9A33A;
+  --gold-tint:#FBF0D2;
+  --sage:#4AA36F;
+  --sage-deep:#3C9161;
+  --sage-tint:#DFF0E4;
+  --ink:#1E3328;
+  --ink-soft:#4C6656;
+  --line:#E2E4D3;
   --radius:20px;
-  --shadow:0 6px 20px rgba(51,50,91,.07);
-  --shadow-lg:0 14px 34px rgba(51,50,91,.14);
+  --shadow:0 6px 20px rgba(18,61,38,.08);
+  --shadow-lg:0 14px 34px rgba(18,61,38,.16);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -35,8 +35,9 @@ body{
   font-family:'DM Sans',system-ui,sans-serif;
   color:var(--ink);
   background:
-    radial-gradient(620px 320px at 50% -130px, rgba(154,153,225,.18), transparent 72%),
-    linear-gradient(104deg,#FCFDFF 0%, #DFEAFA 27%, #F2EFF3 58%, #FAF1E6 100%);
+    radial-gradient(700px 330px at 50% -140px, rgba(46,125,79,.20), transparent 72%),
+    radial-gradient(460px 320px at 86% 74%, rgba(243,207,103,.30), transparent 70%),
+    linear-gradient(168deg,#E7F1E7 0%, #F4F1E3 46%, #EFF2E7 100%);
   background-attachment:fixed;
   min-height:100vh;
   line-height:1.5;
@@ -60,18 +61,16 @@ body{
 }
 .lang button{
   border:0;background:transparent;cursor:pointer;transition:.22s;
-  display:flex;align-items:center;gap:4px;
-  font:600 9.5px 'DM Sans';letter-spacing:.08em;color:var(--ink-soft);
-  padding:3px 7px;border-radius:999px;
+  font:700 10.5px 'DM Sans';letter-spacing:.1em;color:var(--ink-soft);
+  padding:5px 11px;border-radius:999px;
 }
-.lang button svg{width:12px;height:8px;border-radius:1px;display:block}
-.lang button.on{background:var(--blue);color:#fff}
+.lang button.on{background:var(--green);color:#fff}
 
 /* ---------- masthead ---------- */
 header{position:relative;z-index:1;text-align:center;padding:20px 0 4px;animation:rise .7s both}
-.sprig{width:98px;height:98px;margin:0 auto;display:block;
+.sprig{width:104px;height:104px;margin:0 auto;display:block;
   animation:sway 7s ease-in-out infinite;transform-origin:50% 95%}
-@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 .sprig .stem-p{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.5s .1s ease forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 .sprig .lf,.sprig .fl{opacity:0;transform-origin:center;animation:pop .55s ease forwards}
@@ -79,16 +78,16 @@ header{position:relative;z-index:1;text-align:center;padding:20px 0 4px;animatio
 
 h1{
   font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:32px;line-height:1.12;
-  letter-spacing:-.018em;color:var(--title);margin-top:8px;
+  letter-spacing:-.018em;color:var(--green-ink);margin-top:8px;
   animation:rise .7s .18s both;
 }
 .eyebrow{
   display:flex;align-items:center;justify-content:center;gap:11px;margin-top:9px;
   font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--peri-deep);animation:rise .7s .26s both;
+  color:var(--green);animation:rise .7s .26s both;
 }
-.eyebrow::before,.eyebrow::after{content:"";height:1px;width:36px;background:linear-gradient(90deg,transparent,var(--peri))}
-.eyebrow::after{background:linear-gradient(90deg,var(--peri),transparent)}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;width:36px;background:linear-gradient(90deg,transparent,var(--sage))}
+.eyebrow::after{background:linear-gradient(90deg,var(--sage),transparent)}
 
 .status{
   display:inline-flex;align-items:center;gap:8px;margin-top:16px;
@@ -98,45 +97,45 @@ h1{
 }
 .dot{width:7px;height:7px;border-radius:50%;position:relative;flex:none}
 .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;animation:pulse 2.2s ease-out infinite}
-.open .dot{background:var(--blue)}.open .dot::after{background:rgba(0,139,208,.28)}
-.open{color:#0071AB}
-.closed .dot{background:#C4718F}.closed .dot::after{background:rgba(196,113,143,.3)}
-.closed{color:#A85578}
+.open .dot{background:var(--green)}.open .dot::after{background:rgba(46,125,79,.32)}
+.open{color:#1B5A38}
+.closed .dot{background:#D6633C}.closed .dot::after{background:rgba(214,99,60,.3)}
+.closed{color:#B04A28}
 @keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.7);opacity:0}}
 .status-sub{margin-top:8px;font-size:12.5px;font-weight:500;color:var(--ink-soft);animation:rise .7s .4s both}
-.status-sub b{font-weight:700;color:var(--blue-deep)}
+.status-sub b{font-weight:700;color:var(--green-deep)}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
 /* ---------- review invitation ---------- */
 main{position:relative;z-index:1;margin-top:16px}
 .invite{
-  display:block;text-decoration:none;color:inherit;
-  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
-  padding:20px 20px 20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  display:block;text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,var(--green) 0%, var(--green-deep) 100%);
+  border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
   animation:rise .6s .46s both;transition:transform .2s,box-shadow .2s;
 }
-.invite::before{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
-  background:linear-gradient(180deg,var(--peri) 0%,var(--blue) 52%,var(--orchid) 100%);
+.invite::after{
+  content:"";position:absolute;right:-10px;bottom:-30px;width:150px;height:150px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='.42' stroke-linecap='round'%3E%3Cellipse cx='12' cy='4.9' rx='2.3' ry='5.1' transform='rotate(0 12 10)'/%3E%3Cellipse cx='12' cy='4.9' rx='2.3' ry='5.1' transform='rotate(72 12 10)'/%3E%3Cellipse cx='12' cy='4.9' rx='2.3' ry='5.1' transform='rotate(144 12 10)'/%3E%3Cellipse cx='12' cy='4.9' rx='2.3' ry='5.1' transform='rotate(216 12 10)'/%3E%3Cellipse cx='12' cy='4.9' rx='2.3' ry='5.1' transform='rotate(288 12 10)'/%3E%3Ccircle cx='12' cy='10' r='1.5'/%3E%3Cpath d='M12 10 10.4 7.9'/%3E%3Cpath d='M12 10 13.6 7.9'/%3E%3Cpath d='M12 10 12 7.4'/%3E%3Cpath d='M12 10 10.9 11.5'/%3E%3Cpath d='M12 10 13.1 11.5'/%3E%3Cpath d='M12 15.1C12 18.4 11.9 20.6 11.5 23.4'/%3E%3Cpath d='M11.8 18.4C10.2 18.2 9.1 17.3 8.6 16 10.2 15.8 11.5 16.9 11.8 18.4Z'/%3E%3Cpath d='M11.9 20.6C13.4 20.4 14.5 19.5 15 18.3 13.4 18.1 12.2 19.1 11.9 20.6Z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;
+  opacity:.28;transform:rotate(-12deg);pointer-events:none;
 }
 .invite:active{transform:scale(.985)}
-@media(hover:hover){.invite:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}}
-.gmark{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--title)}
-.gmark svg{width:16px;height:16px;display:block}
+@media(hover:hover){.invite:hover{transform:translateY(-3px)}}
 .invite h2{
-  font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:21.5px;
-  color:var(--title);margin:9px 0 6px;letter-spacing:-.012em;line-height:1.22;
+  position:relative;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:22px;
+  color:#fff;margin:12px 0 7px;letter-spacing:-.012em;line-height:1.22;
 }
-.stars{color:#E0A64C;font-size:15px;letter-spacing:4px;line-height:1;margin-bottom:9px}
-.invite p{font-size:13px;font-weight:500;color:var(--ink-soft);line-height:1.6}
+.stars{position:relative;color:#F3CF67;font-size:16px;letter-spacing:4px;line-height:1;margin-bottom:10px}
+.invite p{position:relative;font-size:14.5px;font-weight:600;color:#fff;line-height:1.55}
 .gbtn{
-  margin-top:15px;display:inline-flex;align-items:center;gap:9px;
-  background:var(--blue);color:#fff;font-weight:600;font-size:13.5px;
+  position:relative;margin-top:16px;display:inline-flex;align-items:center;gap:9px;
+  background:var(--gold);color:var(--green-ink);font-weight:700;font-size:13.5px;
   padding:11px 18px;border-radius:999px;
 }
-.gbtn .glogo{width:17px;height:17px;background:#fff;border-radius:50%;display:grid;place-items:center;flex:none}
-.gbtn .glogo svg{width:11px;height:11px}
-.gbtn i{font-style:normal;color:var(--peri)}
+.gbtn .gstar{display:grid;place-items:center;flex:none;color:var(--green-deep)}
+.gbtn .gstar svg{width:19px;height:19px;display:block}
+.gbtn i{font-style:normal;color:var(--green-deep)}
 
 /* ---------- action stack ---------- */
 .stack{
@@ -144,65 +143,58 @@ main{position:relative;z-index:1;margin-top:16px}
   border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
   animation:rise .6s .54s both;
 }
-.stack-head{
-  display:flex;align-items:center;gap:10px;padding:15px 18px 10px;
-  font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--peri-deep);
-}
-.stack-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.row:first-of-type{border-top:0}
 .row{
   display:flex;align-items:center;gap:14px;width:100%;text-align:left;
   padding:13px 18px;text-decoration:none;color:inherit;cursor:pointer;
   background:transparent;border:0;border-top:1px solid var(--line);
   font:inherit;transition:background .2s;
 }
-.row:active{background:var(--blue-tint)}
-@media(hover:hover){.row:hover{background:#FAF9FE}.row:hover .chev{transform:translateX(3px)}}
+.row:active{background:var(--green-tint)}
+@media(hover:hover){.row:hover{background:#F7F3E6}.row:hover .chev{transform:translateX(3px)}}
 .med{
   flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
-  background:var(--blue);color:#fff;position:relative;
+  background:var(--green);color:#fff;position:relative;
 }
 .med svg{width:19px;height:19px;display:block}
-.med::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--blue-tint)}
+.med::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--green-tint)}
 .med.wa{background:#25D366}
 .med.wa::after{border-color:#CFEFDF}
 .med.ig{background:linear-gradient(45deg,#F9CE34 0%,#EE2A7B 48%,#6228D7 100%)}
 .med.ig::after{border-color:#F8DEE9}
-.med.sg{background:var(--orchid-deep)}
-.med.sg::after{border-color:var(--orchid-tint)}
-.med.hn{background:var(--peri);color:#fff}
-.med.hn::after{border-color:var(--peri-tint)}
+.med.sg{background:var(--sage-deep)}
+.med.sg::after{border-color:var(--sage-tint)}
+.med.hn{background:var(--gold);color:#41320E}
+.med.hn::after{border-color:var(--gold-tint)}
 .row-txt{min-width:0;flex:1}
 .row-txt b{display:block;font-size:14.5px;font-weight:700}
 .row-txt span{display:block;font-size:12.5px;font-weight:500;color:var(--ink-soft);margin-top:2px}
-.chev{flex:none;color:var(--peri-deep);font-size:17px;line-height:1;transition:transform .2s}
+.chev{flex:none;color:var(--gold-deep);font-size:17px;line-height:1;transition:transform .2s}
 
 /* ---------- bank details ---------- */
-.bank{border-top:1px solid var(--line);padding:13px 18px 15px;background:linear-gradient(180deg,#FAF9FE,var(--paper))}
+.bank{border-top:1px solid var(--line);padding:13px 18px 15px;background:linear-gradient(180deg,#F8F4E8,var(--paper))}
 .bank-head{
   display:flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;
-  letter-spacing:.28em;text-transform:uppercase;color:var(--peri-deep);margin-bottom:9px;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--green);margin-bottom:9px;
 }
 .bank-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
-.holder{margin-bottom:9px}
-.holder .k{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--peri-deep)}
-.holder .v{display:block;font-size:15px;font-weight:700;color:var(--title);margin-top:2px}
+.holder{margin-bottom:8px}
+.holder .v{display:block;font-size:15.5px;font-weight:700;color:var(--green-ink)}
 .iban-box{
   display:flex;align-items:center;gap:8px;
-  background:var(--peri-tint);border:1px solid #DCDBF4;border-radius:12px;padding:7px 7px 7px 11px;
+  background:var(--gold-tint);border:1px solid #F0E1B1;border-radius:12px;padding:7px 7px 7px 11px;
 }
 .iban-num{
-  flex:1;min-width:0;font-family:ui-monospace,'SF Mono',Menlo,monospace;
-  font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#2B2A63;word-break:break-all;line-height:1.4;
+  flex:1;min-width:0;font-size:13.5px;font-weight:700;letter-spacing:.03em;
+  color:var(--green-ink);word-break:break-all;line-height:1.4;
 }
 .copy-btn{
-  flex:none;width:34px;height:34px;border:0;border-radius:9px;background:var(--blue);
+  flex:none;width:34px;height:34px;border:0;border-radius:9px;background:var(--green);
   color:#fff;display:grid;place-items:center;cursor:pointer;transition:.2s;
 }
 .copy-btn svg{width:15px;height:15px}
 .copy-btn:active{transform:scale(.92)}
-@media(hover:hover){.copy-btn:hover{background:var(--blue-deep)}}
-.notice{display:flex;gap:6px;font-size:11px;font-weight:500;line-height:1.5;color:var(--ink-soft);margin-top:9px}
-.notice svg{width:12px;height:12px;flex:none;margin-top:1px;color:var(--orchid-deep)}
+@media(hover:hover){.copy-btn:hover{background:var(--green-deep)}}
 
 /* ---------- blocks ---------- */
 .block{
@@ -212,23 +204,23 @@ main{position:relative;z-index:1;margin-top:16px}
 }
 .block-title{
   display:flex;align-items:center;gap:10px;
-  font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--peri-deep);
+  font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--green);
 }
 .block-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
 .livebar{
   display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
   padding:9px 12px;border-radius:11px;margin:10px 0 4px;
 }
-.livebar.open{background:var(--orchid-tint);color:#4E7A5E}
-.livebar.closed{background:#FAEEF3;color:#A85578}
+.livebar.open{background:var(--sage-tint);color:#4E7A5E}
+.livebar.closed{background:#FBEEE7;color:#B04A28}
 .hours{list-style:none}
 .hours li{display:flex;align-items:baseline;gap:8px;font-size:13.5px;font-weight:500;padding:7px 10px;border-radius:9px;color:var(--ink-soft)}
 .hours li b{font-weight:700;color:var(--ink);flex:none}
-.hours .leader{flex:1;border-bottom:1px dotted #E0DBEE;transform:translateY(-4px)}
+.hours .leader{flex:1;border-bottom:1px dotted #EADFC2;transform:translateY(-4px)}
 .hours .t{flex:none;font-variant-numeric:tabular-nums}
-.hours li.today{background:var(--blue-tint);color:var(--title);box-shadow:inset 2px 0 0 var(--blue)}
-.hours li.today b{color:var(--title)}
-.hours li .cl{color:#A85578;font-weight:600;letter-spacing:.08em;font-size:11.5px}
+.hours li.today{background:var(--green-tint);color:var(--green-ink);box-shadow:inset 2px 0 0 var(--green)}
+.hours li.today b{color:var(--green-ink)}
+.hours li .cl{color:#B04A28;font-weight:600;letter-spacing:.08em;font-size:11.5px}
 
 .map{padding:7px}
 .map iframe{width:100%;height:225px;border:0;border-radius:14px;display:block}
@@ -236,22 +228,22 @@ main{position:relative;z-index:1;margin-top:16px}
 /* ---------- footer ---------- */
 footer{position:relative;z-index:1;text-align:center;margin-top:22px;font-size:11.5px;font-weight:500;color:var(--ink-soft);animation:rise .6s .8s both}
 .leafline{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:9px}
-.leafline span{height:1px;width:42px;background:linear-gradient(90deg,transparent,var(--peri))}
-.leafline span:last-child{background:linear-gradient(90deg,var(--peri),transparent)}
-.leafline svg{width:15px;height:15px;color:var(--orchid)}
-footer .addr{color:var(--blue-deep);font-weight:500;font-size:12px}
+.leafline span{height:1px;width:42px;background:linear-gradient(90deg,transparent,var(--gold))}
+.leafline span:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.leafline svg{width:15px;height:15px;color:var(--sage)}
+footer .addr{color:var(--green-deep);font-weight:500;font-size:12px}
 footer .cp{margin-top:5px;letter-spacing:.03em}
 
 /* ---------- toast ---------- */
 #toast{
   position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(90px);
-  background:var(--title);color:#fff;font-size:13px;font-weight:600;
+  background:var(--green-ink);color:#fff;font-size:13px;font-weight:600;
   padding:11px 20px;border-radius:999px;box-shadow:var(--shadow-lg);
   transition:transform .35s cubic-bezier(.2,.9,.3,1.2);z-index:50;white-space:nowrap;
 }
 #toast.show{transform:translateX(-50%) translateY(0)}
 
-a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   header,h1,.eyebrow,.status,.status-sub,.invite,.stack,.block,footer{opacity:1}
@@ -265,44 +257,31 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 <div class="wrap">
 
   <div class="lang" role="group" aria-label="Dil / Language">
-    <button id="btnTR" class="on" onclick="setLang('tr')" aria-label="Türkçe">
-      <svg viewBox="0 0 18 12" aria-hidden="true">
-        <rect width="18" height="12" fill="#E30A17"/>
-        <circle cx="7" cy="6" r="3" fill="#fff"/>
-        <circle cx="8.2" cy="6" r="2.4" fill="#E30A17"/>
-        <polygon fill="#fff" points="11.9,4.5 12.253,5.515 13.327,5.536 12.471,6.185 12.782,7.213 11.9,6.6 11.018,7.213 11.329,6.185 10.473,5.536 11.547,5.515"/>
-      </svg>TR</button>
-    <button id="btnEN" onclick="setLang('en')" aria-label="English">
-      <svg viewBox="0 0 18 12" aria-hidden="true">
-        <rect width="18" height="12" fill="#012169"/>
-        <path d="M0,0 18,12 M18,0 0,12" stroke="#fff" stroke-width="2.4"/>
-        <path d="M0,0 18,12 M18,0 0,12" stroke="#C8102E" stroke-width="1.2"/>
-        <path d="M9,0 V12 M0,6 H18" stroke="#fff" stroke-width="3.6"/>
-        <path d="M9,0 V12 M0,6 H18" stroke="#C8102E" stroke-width="2"/>
-      </svg>EN</button>
+    <button id="btnTR" class="on" onclick="setLang('tr')" aria-label="Türkçe">TR</button>
+    <button id="btnEN" onclick="setLang('en')" aria-label="English">EN</button>
   </div>
 
   <header>
     <!-- melisa (lemon balm) sprig -->
     <svg class="sprig" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <path class="stem-p" d="M60 112 C60 88 58 66 60 42 C61 30 62 22 60 12" stroke="#9A99E1" stroke-width="2.6" stroke-linecap="round"/>
-      <g class="lf" style="animation-delay:.45s"><path d="M60 96 C44 96 34 88 30 76 C44 74 58 82 60 96Z" fill="#9A99E1"/><path d="M60 96 C50 90 42 84 38 78" stroke="#6C6BC6" stroke-width="1.2" stroke-linecap="round"/></g>
-      <g class="lf" style="animation-delay:.55s"><path d="M60 96 C76 96 86 88 90 76 C76 74 62 82 60 96Z" fill="#B0AFEA"/><path d="M60 96 C70 90 78 84 82 78" stroke="#6C6BC6" stroke-width="1.2" stroke-linecap="round"/></g>
-      <g class="lf" style="animation-delay:.66s"><path d="M59 70 C45 70 36 63 33 53 C45 51 57 58 59 70Z" fill="#B0AFEA"/><path d="M59 70 C51 65 44 60 41 55" stroke="#6C6BC6" stroke-width="1.1" stroke-linecap="round"/></g>
-      <g class="lf" style="animation-delay:.76s"><path d="M61 70 C75 70 84 63 87 53 C75 51 63 58 61 70Z" fill="#9A99E1"/><path d="M61 70 C69 65 76 60 79 55" stroke="#6C6BC6" stroke-width="1.1" stroke-linecap="round"/></g>
-      <g class="lf" style="animation-delay:.86s"><path d="M59 46 C48 46 41 40 39 32 C49 31 58 37 59 46Z" fill="#C4C3F2"/></g>
-      <g class="lf" style="animation-delay:.94s"><path d="M61 46 C72 46 79 40 81 32 C71 31 62 37 61 46Z" fill="#B0AFEA"/></g>
-      <g class="fl" style="animation-delay:1.04s">
-        <circle cx="60" cy="12" r="5" fill="#F7EDF7" stroke="#C79FCB" stroke-width="1"/>
-        <circle cx="60" cy="12" r="1.8" fill="#008BD0"/>
+      <path class="stem-p" d="M60 112 C60 88 58 66 60 42 C61 30 62 22 60 12" stroke="#2E7D4F" stroke-width="3" stroke-linecap="round"/>
+      <g class="lf" style="animation-delay:.5s"><path d="M60 96 C44 96 34 88 30 76 C44 74 58 82 60 96Z" fill="#3C9161"/><path d="M60 96 C50 90 42 84 38 78" stroke="#1B5A38" stroke-width="1.4" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.6s"><path d="M60 96 C76 96 86 88 90 76 C76 74 62 82 60 96Z" fill="#4AA36F"/><path d="M60 96 C70 90 78 84 82 78" stroke="#1B5A38" stroke-width="1.4" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.72s"><path d="M59 70 C45 70 36 63 33 53 C45 51 57 58 59 70Z" fill="#4AA36F"/><path d="M59 70 C51 65 44 60 41 55" stroke="#1B5A38" stroke-width="1.3" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.82s"><path d="M61 70 C75 70 84 63 87 53 C75 51 63 58 61 70Z" fill="#3C9161"/><path d="M61 70 C69 65 76 60 79 55" stroke="#1B5A38" stroke-width="1.3" stroke-linecap="round"/></g>
+      <g class="lf" style="animation-delay:.92s"><path d="M59 46 C48 46 41 40 39 32 C49 31 58 37 59 46Z" fill="#5BB27E"/></g>
+      <g class="lf" style="animation-delay:1s"><path d="M61 46 C72 46 79 40 81 32 C71 31 62 37 61 46Z" fill="#4AA36F"/></g>
+      <g class="fl" style="animation-delay:1.1s">
+        <circle cx="60" cy="12" r="5" fill="#FFF8E6" stroke="#E9D9A6" stroke-width="1"/>
+        <circle cx="60" cy="12" r="1.8" fill="#F3CF67"/>
       </g>
-      <g class="fl" style="animation-delay:1.14s">
-        <circle cx="51" cy="20" r="4" fill="#FCF6FC" stroke="#C79FCB" stroke-width="1"/>
-        <circle cx="51" cy="20" r="1.4" fill="#008BD0"/>
+      <g class="fl" style="animation-delay:1.2s">
+        <circle cx="51" cy="20" r="4" fill="#FFFDF4" stroke="#E9D9A6" stroke-width="1"/>
+        <circle cx="51" cy="20" r="1.4" fill="#F3CF67"/>
       </g>
-      <g class="fl" style="animation-delay:1.22s">
-        <circle cx="69" cy="21" r="4" fill="#FCF6FC" stroke="#C79FCB" stroke-width="1"/>
-        <circle cx="69" cy="21" r="1.4" fill="#008BD0"/>
+      <g class="fl" style="animation-delay:1.3s">
+        <circle cx="69" cy="21" r="4" fill="#FFFDF4" stroke="#E9D9A6" stroke-width="1"/>
+        <circle cx="69" cy="21" r="1.4" fill="#F3CF67"/>
       </g>
     </svg>
 
@@ -316,37 +295,19 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 
     <!-- review invitation -->
     <a class="invite" href="https://search.google.com/local/writereview?placeid=ChIJZQPC-hFt3hQRPyTMgRQCwx8" target="_blank" rel="noopener">
-      <div class="gmark">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="#34A853" d="M12 24s2.2-3.1 4-6.1l-4-3.4-3.9 3.3C9.9 20.9 12 24 12 24z"/>
-          <path fill="#FBBC04" d="M4.9 14.3 12 20.2l3.1-5.6-3.1-2.9z"/>
-          <path fill="#4285F4" d="M19.1 14.3c.6-1.2.9-2.4.9-3.6 0-1.6-.4-3-1.2-4.2l-6.8 8 3.1 2.6c1.6-1.1 3.1-2 4-2.8z"/>
-          <path fill="#EA4335" d="M12 0C8.6 0 5.6 1.9 4.2 4.9l3.4 2.9C8.5 6 10.1 4.9 12 4.9c1.5 0 2.8.6 3.8 1.5L18.8 3C17 1.1 14.7 0 12 0z"/>
-          <path fill="#1A73E8" d="M4.2 4.9C3.2 6.6 2.9 8.4 3.1 10.2c.2 1.6.9 3 1.8 4.1l5-5.9c-.7-.4-1.5-.6-2.3-.6-1 0-2 .3-2.8.9L4.2 4.9z"/>
-          <circle cx="12" cy="9.6" r="2.7" fill="#FFF"/>
-        </svg>
-        <span data-i="gmark">GOOGLE İŞLETME PROFİLİ</span>
-      </div>
       <h2 data-i="reviewTitle">Deneyiminizi bizimle paylaşın</h2>
       <div class="stars">★★★★★</div>
       <p data-i="reviewSub">Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.</p>
       <div class="gbtn">
-        <span class="glogo">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="#4285F4" d="M23.5 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.53 5.53 0 01-2.4 3.63v3h3.88c2.27-2.09 3.55-5.17 3.55-8.87z"/>
-            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.95-2.91l-3.88-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.26v3.09A12 12 0 0012 24z"/>
-            <path fill="#FBBC05" d="M5.27 14.29a7.2 7.2 0 010-4.58V6.62H1.26a12 12 0 000 10.76l4.01-3.09z"/>
-            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 001.26 6.62l4.01 3.09C6.22 6.86 8.87 4.75 12 4.75z"/>
-          </svg>
+        <span class="gstar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.3 5.8 21l1.6-7.1L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.4 4.7 1.6 7.1z"/></svg>
         </span>
-        <span data-i="reviewBtn">Google'da değerlendirin</span><i>→</i>
+        <span data-i="reviewBtn">Bizi değerlendirin</span><i>→</i>
       </div>
     </a>
 
     <!-- contact stack -->
     <section class="stack">
-      <div class="stack-head" data-i="contactHead">İLETİŞİM</div>
-
       <a class="row" href="tel:+905338453737">
         <span class="med" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -381,7 +342,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 
       <button class="row" type="button" onclick="saveContact()">
         <span class="med hn" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zM9 8a2 2 0 110 4 2 2 0 010-4zm4 9H5v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1zm6-2h-4v-1.5h4V15zm0-3h-4v-1.5h4V12zm0-3h-4V7.5h4V9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 12a4 4 0 100-8 4 4 0 000 8zM6 10V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </span>
         <span class="row-txt"><b data-i="vcard">Rehbere kaydet</b><span data-i="vcardSub">Tek dokunuşla telefonunuza ekleyin</span></span>
         <span class="chev" aria-hidden="true">›</span>
@@ -389,9 +350,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 
       <!-- bank details -->
       <div class="bank">
-        <div class="bank-head" data-i="bankHead">BANKA BİLGİLERİ</div>
+        <div class="bank-head" data-i="bankHead">ÖDEME BİLGİLERİ</div>
         <div class="holder">
-          <span class="k" data-i="holder">Hesap sahibi</span>
           <span class="v">Melisa İşimtekin</span>
         </div>
         <div class="iban-box">
@@ -399,10 +359,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
           <button class="copy-btn" type="button" onclick="copyIban()" aria-label="IBAN">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>
           </button>
-        </div>
-        <div class="notice">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg>
-          <span data-i="bankNote">Ödeme yapmadan önce hesap adı ve IBAN bilgilerini kontrol etmenizi rica ederiz.</span>
         </div>
       </div>
     </section>
@@ -444,18 +400,15 @@ const T = {
   tr:{
     pharmacy:"ECZANE", pharmacy2:"Eczanesi",
     open:"Şu an açık", closed:"Şu an kapalı",
-    gmark:"GOOGLE İŞLETME PROFİLİ",
     reviewTitle:"Deneyiminizi bizimle paylaşın",
     reviewSub:"Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.",
-    reviewBtn:"Google'da değerlendirin",
-    contactHead:"İLETİŞİM",
+    reviewBtn:"Bizi değerlendirin",
     call:"Bizi arayın",
     waSub:"Sorularınızı mesajla iletin",
     igSub:"Bizi keşfedin: yenilikler, doğal ürünler ve sağlık önerileri",
     dir:"Yol tarifi", dirSub:"Uğur Mumcu Caddesi, Karakum – Girne",
     vcard:"Rehbere kaydet", vcardSub:"Tek dokunuşla telefonunuza ekleyin",
-    bankHead:"BANKA BİLGİLERİ", holder:"Hesap sahibi",
-    bankNote:"Ödeme yapmadan önce hesap adı ve IBAN bilgilerini kontrol etmenizi rica ederiz.",
+    bankHead:"ÖDEME BİLGİLERİ",
     hoursTitle:"ÇALIŞMA SAATLERİ",
     days:["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"],
     closedDay:"KAPALI",
@@ -466,18 +419,15 @@ const T = {
   en:{
     pharmacy:"PHARMACY", pharmacy2:"Pharmacy",
     open:"Open now", closed:"Closed now",
-    gmark:"GOOGLE BUSINESS PROFILE",
     reviewTitle:"Share your experience with us",
     reviewSub:"If you were happy with our service, a short review on Google means a great deal to us and helps more people find the pharmacy.",
-    reviewBtn:"Leave a Google review",
-    contactHead:"CONTACT",
+    reviewBtn:"Review us",
     call:"Call us",
     waSub:"Send us your questions",
     igSub:"Discover us: new arrivals, natural products and health tips",
     dir:"Directions", dirSub:"Uğur Mumcu Street, Karakum – Kyrenia",
     vcard:"Save to contacts", vcardSub:"Add us to your phone in one tap",
-    bankHead:"BANK DETAILS", holder:"Account holder",
-    bankNote:"Please check the account name and IBAN before making any payment.",
+    bankHead:"PAYMENT DETAILS",
     hoursTitle:"OPENING HOURS",
     days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
     closedDay:"CLOSED",
@@ -638,7 +588,7 @@ function toast(msg){
 (function(){
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const host = document.getElementById("leaves");
-  const tones = ["#9A99E1","#B0AFEA","#DCBDDF","#008BD0"];
+  const tones = ["#3C9161","#4AA36F","#F3CF67","#5BB27E"];
   let html = "";
   for (let i=0;i<20;i++){
     const s = 11 + Math.round(Math.random()*15);
@@ -649,8 +599,8 @@ function toast(msg){
     const c = tones[Math.floor(Math.random()*tones.length)];
     const blossom = i % 5 === 0;
     const shape = blossom
-      ? `<g><circle cx="12" cy="12" r="6" fill="#F7EDF7"/><circle cx="12" cy="12" r="2.2" fill="#008BD0"/></g>`
-      : `<g><path d="M12 22 C4 16 4 6 12 2 C20 6 20 16 12 22Z" fill="${c}"/><path d="M12 4 L12 20" stroke="#6C6BC6" stroke-width="1" opacity=".5"/></g>`;
+      ? `<g><circle cx="12" cy="12" r="6" fill="#FFF8E6"/><circle cx="12" cy="12" r="2.2" fill="#F3CF67"/></g>`
+      : `<g><path d="M12 22 C4 16 4 6 12 2 C20 6 20 16 12 22Z" fill="${c}"/><path d="M12 4 L12 20" stroke="#1B5A38" stroke-width="1" opacity=".5"/></g>`;
     html += `<svg width="${s}" height="${s}" viewBox="0 0 24 24" style="left:${x}%;opacity:${op};animation-duration:${d}s;animation-delay:${dl}s">${shape}</svg>`;
   }
   host.innerHTML = html;
