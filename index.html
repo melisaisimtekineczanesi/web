@@ -107,14 +107,50 @@ h1{
 .status-sub b{font-weight:700;color:var(--green-deep)}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-/* ---------- review invitation ---------- */
+/* ---------- leave notice ---------- */
 main{position:relative;z-index:1;margin-top:16px}
+.notice{
+  display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#FEF9EA 0%, var(--gold-tint) 100%);
+  border:1px solid #E9D9A6;border-radius:var(--radius);
+  box-shadow:var(--shadow);animation:rise .6s .42s both;
+  transition:transform .2s,box-shadow .2s;
+}
+.notice[hidden]{display:none}
+.notice::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--gold),var(--gold-deep))}
+.notice:active{transform:scale(.985)}
+@media(hover:hover){.notice:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}}
+.notice-in{padding:15px 17px 16px 21px}
+.notice-head{display:flex;align-items:center;gap:9px}
+.notice-ic{
+  flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:var(--gold);color:#6E5410;
+}
+.notice-ic svg{width:15px;height:15px;display:block}
+.notice-tag{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6A12}
+.notice-chip{
+  margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  background:#fff;border:1px solid #E9D9A6;color:#8A6A12;
+  padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.notice-txt{margin-top:11px;font-size:14px;font-weight:500;line-height:1.6;color:#4A3A12}
+.notice-txt b{font-weight:700;color:#3B2E0C}
+.notice-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  background:var(--green);color:#fff;font-weight:700;font-size:13px;
+  padding:10px 16px;border-radius:999px;
+}
+.notice-cta svg{width:15px;height:15px;display:block}
+.notice-cta i{font-style:normal;opacity:.85}
+
+/* ---------- review invitation ---------- */
 .invite{
-  display:block;text-decoration:none;color:#fff;
+  display:block;text-decoration:none;color:#fff;margin-top:12px;
   background:linear-gradient(135deg,var(--green) 0%, var(--green-deep) 100%);
   border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-lg);
   position:relative;overflow:hidden;
-  animation:rise .6s .46s both;transition:transform .2s,box-shadow .2s;
+  animation:rise .6s .5s both;transition:transform .2s,box-shadow .2s;
 }
 .invite::after{
   content:"";position:absolute;right:-34px;bottom:-52px;width:190px;height:190px;
@@ -142,7 +178,7 @@ main{position:relative;z-index:1;margin-top:16px}
 .stack{
   margin-top:12px;background:var(--paper);border:1px solid var(--line);
   border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
-  animation:rise .6s .54s both;
+  animation:rise .6s .58s both;
 }
 .row:first-of-type{border-top:0}
 .row{
@@ -202,7 +238,7 @@ main{position:relative;z-index:1;margin-top:16px}
 .block{
   margin-top:12px;background:var(--paper);border:1px solid var(--line);
   border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;
-  animation:rise .6s .62s both;
+  animation:rise .6s .66s both;
 }
 .block-title{
   display:flex;align-items:center;gap:10px;
@@ -223,6 +259,9 @@ main{position:relative;z-index:1;margin-top:16px}
 .hours li.today{background:var(--green-tint);color:var(--green-ink);box-shadow:inset 2px 0 0 var(--green)}
 .hours li.today b{color:var(--green-ink)}
 .hours li .cl{color:#B04A28;font-weight:600;letter-spacing:.08em;font-size:11.5px}
+.hours li.leave{background:var(--gold-tint);box-shadow:inset 2px 0 0 var(--gold-deep)}
+.hours li.leave b{color:#6E5410}
+.hours li .lv{color:#8A6A12;font-weight:700;letter-spacing:.08em;font-size:11.5px}
 
 .map{padding:7px}
 .map iframe{width:100%;height:225px;border:0;border-radius:14px;display:block}
@@ -248,7 +287,7 @@ footer .cp{margin-top:5px;letter-spacing:.03em}
 a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  header,h1,.eyebrow,.status,.status-sub,.invite,.stack,.block,footer{opacity:1}
+  header,h1,.eyebrow,.status,.status-sub,.notice,.invite,.stack,.block,footer{opacity:1}
 }
 </style>
 </head>
@@ -294,6 +333,24 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
   </header>
 
   <main>
+
+    <!-- annual leave notice -->
+    <a class="notice" id="notice" href="tel:+905338453737" hidden>
+      <div class="notice-in">
+        <div class="notice-head">
+          <span class="notice-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v2H5.5A2.5 2.5 0 003 6.5v13A2.5 2.5 0 005.5 22h13a2.5 2.5 0 002.5-2.5v-13A2.5 2.5 0 0018.5 4H17V2h-2v2H9V2H7zm12 8v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V10h14zm-9.9 2.9L7.7 14.3l2.4 2.4 4.6-4.6-1.4-1.4-3.2 3.2-1.0-1.0z"/></svg>
+          </span>
+          <span class="notice-tag" data-i="noticeTag">DUYURU</span>
+          <span class="notice-chip" data-i="noticeChip">26 – 30 AĞUSTOS</span>
+        </div>
+        <p class="notice-txt" id="noticeTxt" data-i="noticeTxt">Eczanemiz 26 Ağustos – 30 Ağustos tarihleri arasında zorunlu yıllık izin sebebiyle kapalı olacaktır. Acil durumlarda telefondan ulaşabilirsiniz. 31 Ağustos'ta görüşmek üzere.</p>
+        <span class="notice-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span data-i="noticeCta">Acil durumlar için arayın</span><i>→</i>
+        </span>
+      </div>
+    </a>
 
     <!-- review invitation -->
     <a class="invite" href="https://search.google.com/local/writereview?placeid=ChIJZQPC-hFt3hQRPyTMgRQCwx8" target="_blank" rel="noopener">
@@ -402,6 +459,12 @@ const T = {
   tr:{
     pharmacy:"ECZANE", pharmacy2:"Eczanesi",
     open:"Şu an açık", closed:"Şu an kapalı",
+    noticeTag:"DUYURU",
+    noticeChip:"26 – 30 AĞUSTOS",
+    noticeTxt:"Eczanemiz 26 Ağustos – 30 Ağustos tarihleri arasında zorunlu yıllık izin sebebiyle kapalı olacaktır. Acil durumlarda telefondan ulaşabilirsiniz. 31 Ağustos'ta görüşmek üzere.",
+    noticeCta:"Acil durumlar için arayın",
+    leaveDetail:"31 Ağustos Pazartesi yeniden açılıyoruz",
+    leaveTag:"YILLIK İZİN",
     reviewTitle:"Deneyiminizi bizimle paylaşın",
     reviewSub:"Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.",
     reviewBtn:"Bizi değerlendirin",
@@ -421,6 +484,12 @@ const T = {
   en:{
     pharmacy:"PHARMACY", pharmacy2:"Pharmacy",
     open:"Open now", closed:"Closed now",
+    noticeTag:"NOTICE",
+    noticeChip:"26 – 30 AUGUST",
+    noticeTxt:"Our pharmacy will be closed from 26 to 30 August for mandatory annual leave. You can still reach us by phone in an emergency. See you again on 31 August.",
+    noticeCta:"Call us in an emergency",
+    leaveDetail:"reopens Monday 31 August",
+    leaveTag:"ANNUAL LEAVE",
     reviewTitle:"Share your experience with us",
     reviewSub:"If you were happy with our service, a short review on Google means a great deal to us and helps more people find the pharmacy.",
     reviewBtn:"Review us",
@@ -451,6 +520,10 @@ const HOURS = [
   null
 ];
 
+/* annual leave: inclusive range, YYYY-MM-DD.
+   the notice hides itself automatically after "back". */
+const LEAVE = { from:"2026-08-26", to:"2026-08-30", back:"2026-08-31" };
+
 const HR_SUF = {0:"da",1:"de",2:"de",3:"te",4:"te",5:"te",6:"da",7:"de",8:"de",9:"da",10:"da",11:"de",
                 12:"de",13:"te",14:"te",15:"te",16:"da",17:"de",18:"de",19:"da",20:"de",21:"de",22:"de",23:"te"};
 function trAt(t){
@@ -475,12 +548,27 @@ function nowLocal(){
   return new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Istanbul"}));
 }
 const toMin = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
+const ymd = d => d.getFullYear() + "-" +
+  String(d.getMonth()+1).padStart(2,"0") + "-" +
+  String(d.getDate()).padStart(2,"0");
+const onLeave = d => { const s = ymd(d); return s >= LEAVE.from && s <= LEAVE.to; };
+
+/* show the notice from today until the reopening day, then hide it */
+function renderNotice(){
+  const el = document.getElementById("notice");
+  el.hidden = ymd(nowLocal()) > LEAVE.back;
+}
 
 function state(){
   const n = nowLocal();
   const dayIdx = (n.getDay()+6)%7;
   const mins = n.getHours()*60 + n.getMinutes();
   const t = T[lang];
+
+  if (onLeave(n)){
+    return { isOpen:false, dayName:t.days[dayIdx], detail:t.leaveDetail };
+  }
+
   const today = HOURS[dayIdx];
   let isOpen = false, detail = "";
 
@@ -490,9 +578,10 @@ function state(){
   } else if (today && mins < toMin(today[0])){
     detail = lang === "tr" ? trAt(today[0]) + " açılıyor" : "opens at " + today[0];
   } else {
-    for (let i=1;i<=7;i++){
-      const idx = (dayIdx+i)%7;
-      if (HOURS[idx]){
+    for (let i=1;i<=10;i++){
+      const d = new Date(n); d.setDate(n.getDate()+i);
+      const idx = (d.getDay()+6)%7;
+      if (HOURS[idx] && !onLeave(d)){
         const when = (i === 1) ? (lang === "tr" ? "yarın" : "tomorrow") : t.days[idx];
         detail = lang === "tr"
           ? when + " " + trAt(HOURS[idx][0]) + " açılıyor"
@@ -518,16 +607,21 @@ function renderStatus(){
 }
 
 function renderHours(){
-  const dayIdx = (nowLocal().getDay()+6)%7;
+  const n = nowLocal();
+  const dayIdx = (n.getDay()+6)%7;
   const t = T[lang];
   const ul = document.getElementById("hoursList");
   ul.innerHTML = "";
   t.days.forEach((d,i)=>{
+    const date = new Date(n); date.setDate(n.getDate() + (i - dayIdx));
+    const leave = onLeave(date);
     const li = document.createElement("li");
-    if (i === dayIdx) li.classList.add("today");
-    const time = HOURS[i]
-      ? `<span class="t">${HOURS[i][0]} – ${HOURS[i][1]}</span>`
-      : `<span class="t cl">${t.closedDay}</span>`;
+    if (leave) li.classList.add("leave");
+    else if (i === dayIdx) li.classList.add("today");
+    let time;
+    if (leave)          time = `<span class="t lv">${t.leaveTag}</span>`;
+    else if (HOURS[i])  time = `<span class="t">${HOURS[i][0]} – ${HOURS[i][1]}</span>`;
+    else                time = `<span class="t cl">${t.closedDay}</span>`;
     li.innerHTML = `<b>${d}</b><span class="leader"></span>${time}`;
     ul.appendChild(li);
   });
@@ -610,11 +704,12 @@ function toast(msg){
 
 /* ---- init ---- */
 document.getElementById("yr").textContent = nowLocal().getFullYear();
+renderNotice();
 (function(){
   const primary = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
   setLang(primary.toLowerCase().startsWith("tr") ? "tr" : "en");
 })();
-setInterval(renderStatus, 60000);
+setInterval(()=>{ renderStatus(); renderNotice(); }, 60000);
 </script>
 </body>
 </html>
