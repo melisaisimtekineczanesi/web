@@ -253,6 +253,58 @@ main{position:relative;z-index:1;margin-top:16px}
 .notice-cta svg{width:15px;height:15px;display:block}
 .notice-cta i{font-style:normal;opacity:.85}
 
+/* ---------- on-duty (nöbet) alert: seasonal colours, glowing border, blinking tag ---------- */
+.duty{
+  display:block;text-decoration:none;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#E8333A 0%, #A3121B 100%);
+  border:2px solid #FFC93C;
+  border-radius:var(--radius);box-shadow:var(--shadow-lg);
+  animation:rise .6s .42s both, dutyGlow 1.6s 1s ease-in-out infinite;
+  transition:transform .2s;
+}
+.duty[hidden]{display:none}
+.duty:not([hidden]) + .notice{margin-top:12px}
+.duty:active{transform:scale(.985)}
+@media(hover:hover){.duty:hover{transform:translateY(-3px)}}
+@keyframes dutyGlow{
+  0%,100%{box-shadow:0 14px 34px rgba(163,18,27,.35),0 0 0 0 rgba(232,51,58,.75)}
+  60%{box-shadow:0 14px 34px rgba(163,18,27,.35),0 0 0 14px rgba(232,51,58,0)}
+}
+.duty-in{padding:16px 18px 17px}
+.duty-head{display:flex;align-items:center;gap:10px}
+.duty-ic{
+  flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  background:#FFC93C;color:#7A0F15;position:relative;
+}
+.duty-ic svg{width:16px;height:16px;display:block}
+.duty-ic::after{
+  content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #FFC93C;
+  animation:dutyRing 1.6s ease-out infinite;
+}
+@keyframes dutyRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.duty-tag{
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FFE08A;
+  animation:dutyBlink 1.3s ease-in-out infinite;
+}
+@keyframes dutyBlink{0%,100%{opacity:1}50%{opacity:.3}}
+.duty-chip{
+  margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  background:#fff;border:1px solid #fff;color:#A3121B;
+  padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.duty h2{
+  font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:22px;line-height:1.22;
+  letter-spacing:-.012em;color:#fff;margin:12px 0 6px;
+}
+.duty p{font-size:14px;font-weight:500;line-height:1.55;color:rgba(255,255,255,.92)}
+.duty-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  background:#FFC93C;color:#5A0B10;font-weight:700;font-size:13px;
+  padding:10px 16px;border-radius:999px;
+}
+.duty-cta svg{width:15px;height:15px;display:block}
+.duty-cta i{font-style:normal;opacity:.85}
+
 /* ---------- review invitation ---------- */
 .invite{
   display:block;text-decoration:none;color:#fff;margin-top:12px;
@@ -371,6 +423,7 @@ main{position:relative;z-index:1;margin-top:16px}
 .hours li.leave{background:var(--gold-tint);box-shadow:inset 2px 0 0 var(--gold-deep)}
 .hours li.leave b{color:#6E5410}
 .hours li .lv{color:#8A6A12;font-weight:700;letter-spacing:.08em;font-size:11.5px}
+.hours li .dt{font-style:normal;font-weight:700;letter-spacing:.08em;font-size:10.5px;color:#C8202A;margin-right:6px}
 
 .map{padding:7px}
 .map iframe{width:100%;height:225px;border:0;border-radius:14px;display:block}
@@ -447,7 +500,7 @@ body.xmas{
 a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  header,h1,.eyebrow,.festive,.status,.status-sub,.notice,.invite,.stack,.block,footer{opacity:1}
+  header,h1,.eyebrow,.festive,.status,.status-sub,.duty,.notice,.invite,.stack,.block,footer{opacity:1}
 }
 </style>
 </head>
@@ -507,6 +560,25 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
   </header>
 
   <main>
+
+    <!-- on-duty (nöbet) alert, shown only on duty days -->
+    <a class="duty" id="duty" href="tel:+905338453737" role="status" hidden>
+      <div class="duty-in">
+        <div class="duty-head">
+          <span class="duty-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+          </span>
+          <span class="duty-tag" data-i="dutyTag">NÖBETÇİ ECZANE</span>
+          <span class="duty-chip" id="dutyChip"></span>
+        </div>
+        <h2 data-i="dutyTitle">Bugün nöbetçiyiz</h2>
+        <p data-i="dutyTxt">Bu gece 24:00'e kadar açığız. İhtiyacınız olduğunda bize uğrayabilir ya da arayabilirsiniz.</p>
+        <span class="duty-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span data-i="dutyCta">Hemen arayın</span><i>→</i>
+        </span>
+      </div>
+    </a>
 
     <!-- annual leave notice -->
     <a class="notice" id="notice" href="tel:+905338453737" hidden>
@@ -640,6 +712,13 @@ const T = {
       xmas:"Mutlu Noeller ve Mutlu Yıllar"
     },
     open:"Şu an açık", closed:"Şu an kapalı",
+    dutyTag:"NÖBETÇİ ECZANE",
+    dutyTitle:"Bugün nöbetçiyiz",
+    dutyTxt:"Bu gece 24:00'e kadar açığız. İhtiyacınız olduğunda bize uğrayabilir ya da arayabilirsiniz.",
+    dutyCta:"Hemen arayın",
+    dutyOpen:"nöbetçiyiz, gece 24:00'e kadar açık",
+    dutyHours:"NÖBET",
+    months:["OCAK","ŞUBAT","MART","NİSAN","MAYIS","HAZİRAN","TEMMUZ","AĞUSTOS","EYLÜL","EKİM","KASIM","ARALIK"],
     noticeTag:"DUYURU",
     noticeChip:"26 – 30 AĞUSTOS",
     noticeTxt:"Eczanemiz 26 Ağustos – 30 Ağustos tarihleri arasında zorunlu yıllık izin sebebiyle kapalı olacaktır. Acil durumlarda telefondan ulaşabilirsiniz. 31 Ağustos'ta görüşmek üzere.",
@@ -672,6 +751,13 @@ const T = {
       xmas:"Merry Christmas and Happy New Year"
     },
     open:"Open now", closed:"Closed now",
+    dutyTag:"ON-DUTY PHARMACY",
+    dutyTitle:"We're on duty today",
+    dutyTxt:"We're open until midnight tonight. Drop by or give us a call whenever you need us.",
+    dutyCta:"Call us now",
+    dutyOpen:"on duty, open until midnight",
+    dutyHours:"ON DUTY",
+    months:["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"],
     noticeTag:"NOTICE",
     noticeChip:"26 – 30 AUGUST",
     noticeTxt:"Our pharmacy will be closed from 26 to 30 August for mandatory annual leave. You can still reach us by phone in an emergency. See you again on 31 August.",
@@ -720,6 +806,17 @@ const XMAS = { from:"12-20", to:"01-06" };
    the notice hides itself automatically after "back". */
 const LEAVE = { from:"2026-08-26", to:"2026-08-30", back:"2026-08-31" };
 
+/* on-duty (nöbet) days, YYYY-MM-DD — KTEB çizelgesi, 28 Eylül 2026 – 26 Eylül 2027.
+   on these days we open at the usual time (DUTY_HOURS.open if normally closed)
+   and stay open until midnight; the duty alert shows for the whole day. */
+const DUTY = [
+  "2026-10-05", /* TEST: sadece önizleme için, yayına almadan önce silin */
+  "2026-10-06","2026-11-09","2026-12-31",
+  "2027-01-28","2027-02-17","2027-03-13","2027-03-25","2027-04-19",
+  "2027-05-23","2027-06-18","2027-07-03","2027-07-28","2027-08-10","2027-09-09"
+];
+const DUTY_HOURS = { open:"08:00", close:"24:00" };
+
 const HR_SUF = {0:"da",1:"de",2:"de",3:"te",4:"te",5:"te",6:"da",7:"de",8:"de",9:"da",10:"da",11:"de",
                 12:"de",13:"te",14:"te",15:"te",16:"da",17:"de",18:"de",19:"da",20:"de",21:"de",22:"de",23:"te"};
 function trAt(t){
@@ -738,6 +835,7 @@ function setLang(l){
   });
   renderHours();
   renderStatus();
+  renderDuty();
   renderFestive();
 }
 
@@ -748,15 +846,18 @@ const toMin = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
 const md = d => String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
 const ymd = d => d.getFullYear() + "-" + md(d);
 const onLeave = d => { const s = ymd(d); return s >= LEAVE.from && s <= LEAVE.to; };
+const isDuty = d => DUTY.includes(ymd(d));
 
-/* opening hours for a specific date (handles the seasonal Thursday) */
+/* opening hours for a specific date (handles the seasonal Thursday and duty days) */
 function hoursFor(d){
   const idx = (d.getDay()+6)%7;
+  let h = HOURS[idx];
   if (idx === 3){
     const m = md(d);
-    if (m >= THU_SUMMER.from && m < THU_SUMMER.to) return THU_SUMMER.hours;
+    if (m >= THU_SUMMER.from && m < THU_SUMMER.to) h = THU_SUMMER.hours;
   }
-  return HOURS[idx];
+  if (isDuty(d)) h = [h ? h[0] : DUTY_HOURS.open, DUTY_HOURS.close];
+  return h;
 }
 
 /* show the notice from today until the reopening day, then hide it */
@@ -765,13 +866,21 @@ function renderNotice(){
   el.hidden = ymd(nowLocal()) > LEAVE.back;
 }
 
+/* show the duty alert only on duty days */
+function renderDuty(){
+  const n = nowLocal();
+  const on = isDuty(n);
+  document.getElementById("duty").hidden = !on;
+  if (on) document.getElementById("dutyChip").textContent = n.getDate() + " " + T[lang].months[n.getMonth()];
+}
+
 function state(){
   const n = nowLocal();
   const dayIdx = (n.getDay()+6)%7;
   const mins = n.getHours()*60 + n.getMinutes();
   const t = T[lang];
 
-  if (onLeave(n)){
+  if (onLeave(n) && !isDuty(n)){
     return { isOpen:false, dayName:t.days[dayIdx], detail:t.leaveDetail };
   }
 
@@ -780,7 +889,8 @@ function state(){
 
   if (today && mins >= toMin(today[0]) && mins < toMin(today[1])){
     isOpen = true;
-    detail = lang === "tr" ? trAt(today[1]) + " kapanıyor" : "closes at " + today[1];
+    if (isDuty(n)) detail = t.dutyOpen;
+    else detail = lang === "tr" ? trAt(today[1]) + " kapanıyor" : "closes at " + today[1];
   } else if (today && mins < toMin(today[0])){
     detail = lang === "tr" ? trAt(today[0]) + " açılıyor" : "opens at " + today[0];
   } else {
@@ -788,7 +898,7 @@ function state(){
       const d = new Date(n); d.setDate(n.getDate()+i);
       const idx = (d.getDay()+6)%7;
       const h = hoursFor(d);
-      if (h && !onLeave(d)){
+      if (h && (!onLeave(d) || isDuty(d))){
         const when = (i === 1) ? (lang === "tr" ? "yarın" : "tomorrow") : t.days[idx];
         detail = lang === "tr"
           ? when + " " + trAt(h[0]) + " açılıyor"
@@ -821,14 +931,15 @@ function renderHours(){
   ul.innerHTML = "";
   t.days.forEach((d,i)=>{
     const date = new Date(n); date.setDate(n.getDate() + (i - dayIdx));
-    const leave = onLeave(date);
+    const duty = isDuty(date);
+    const leave = onLeave(date) && !duty;
     const h = hoursFor(date);
     const li = document.createElement("li");
     if (leave) li.classList.add("leave");
     else if (i === dayIdx) li.classList.add("today");
     let time;
     if (leave)   time = `<span class="t lv">${t.leaveTag}</span>`;
-    else if (h)  time = `<span class="t">${h[0]} – ${h[1]}</span>`;
+    else if (h)  time = `<span class="t">${duty ? `<em class="dt">${t.dutyHours}</em>` : ""}${h[0]} – ${h[1]}</span>`;
     else         time = `<span class="t cl">${t.closedDay}</span>`;
     li.innerHTML = `<b>${d}</b><span class="leader"></span>${time}`;
     ul.appendChild(li);
@@ -982,12 +1093,13 @@ function applySeason(){
 /* ---- init ---- */
 document.getElementById("yr").textContent = nowLocal().getFullYear();
 renderNotice();
+renderDuty();
 applySeason();
 (function(){
   const primary = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
   setLang(primary.toLowerCase().startsWith("tr") ? "tr" : "en");
 })();
-setInterval(()=>{ renderStatus(); renderNotice(); renderHours(); applySeason(); }, 60000);
+setInterval(()=>{ renderStatus(); renderNotice(); renderDuty(); renderHours(); applySeason(); }, 60000);
 </script>
 </body>
 </html>
