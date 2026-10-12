@@ -334,6 +334,7 @@ main{position:relative;z-index:1;margin-top:16px}
 .gbtn .gstar{display:grid;place-items:center;flex:none;color:var(--green-deep)}
 .gbtn .gstar svg{width:19px;height:19px;display:block}
 .gbtn i{font-style:normal;color:var(--green-deep)}
+.invite .review-note{margin-top:10px;font-size:12px;font-weight:500;color:rgba(255,255,255,.82);line-height:1.45}
 
 /* ---------- action stack ---------- */
 .stack{
@@ -609,6 +610,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
         </span>
         <span data-i="reviewBtn">Bizi değerlendirin</span><i>→</i>
       </div>
+      <p class="review-note" data-i="reviewNote">Uygulama önerisi çıkarsa "Web'de devam et"i seçin.</p>
     </a>
 
     <!-- contact stack -->
@@ -637,7 +639,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
         <span class="chev" aria-hidden="true">›</span>
       </a>
 
-      <a class="row" href="https://maps.app.goo.gl/J6xCfDkrtRgvEufeA?g_st=ic" target="_blank" rel="noopener">
+      <a class="row" href="https://www.google.com/maps/dir/?api=1&destination=Melisa%20%C4%B0%C5%9Fimtekin%20Eczanesi%2C%20U%C4%9Fur%20Mumcu%20Caddesi%2C%20Karakum%2C%20Girne&destination_place_id=ChIJZQPC-hFt3hQRPyTMgRQCwx8" target="_blank" rel="noopener" onclick="return openDirections(event)">
         <span class="med sg" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
         </span>
@@ -728,6 +730,7 @@ const T = {
     reviewTitle:"Deneyiminizi bizimle paylaşın",
     reviewSub:"Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.",
     reviewBtn:"Bizi değerlendirin",
+    reviewNote:"Uygulama önerisi çıkarsa \"Web'de devam et\"i seçin.",
     call:"Bizi arayın",
     waSub:"Sorularınızı mesajla iletin",
     igSub:"Bizi keşfedin: yenilikler, doğal ürünler ve sağlık önerileri",
@@ -767,6 +770,7 @@ const T = {
     reviewTitle:"Share your experience with us",
     reviewSub:"If you were happy with our service, a short review on Google means a great deal to us and helps more people find the pharmacy.",
     reviewBtn:"Review us",
+    reviewNote:"If you're asked to open the app, choose \"Continue on web\".",
     call:"Call us",
     waSub:"Send us your questions",
     igSub:"Discover us: new arrivals, natural products and health tips",
@@ -815,6 +819,43 @@ const DUTY = [
   "2027-05-23","2027-06-18","2027-07-03","2027-07-28","2027-08-10","2027-09-09"
 ];
 const DUTY_HOURS = { open:"08:00", close:"24:00" };
+
+/* pharmacy location for directions.
+   lat/lng: Google Maps'te eczanenin pinine uzun basın, çıkan "35.xxx, 33.xxx" değerini buraya yazın.
+   boş bırakılırsa ad + adres ile aranır (Apple Haritalar KKTC'de adresi her zaman bulamayabilir). */
+const PLACE = {
+  name:"Melisa İşimtekin Eczanesi",
+  addr:"Uğur Mumcu Caddesi, Karakum, Girne",
+  lat:"", lng:"",
+  placeId:"ChIJZQPC-hFt3hQRPyTMgRQCwx8"
+};
+
+/* opens the phone's own map app with directions:
+   iPhone → Apple Maps, Android → default map app (geo:), computer → Google Maps web */
+function openDirections(e){
+  const ua = navigator.userAgent;
+  const iOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const android = /Android/i.test(ua);
+  if (!iOS && !android) return true;   /* desktop: follow the link's own href */
+
+  const hasLL = PLACE.lat && PLACE.lng;
+  const ll = PLACE.lat + "," + PLACE.lng;
+  const q = PLACE.name + ", " + PLACE.addr;
+  const web = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(hasLL ? ll : q) +
+              "&destination_place_id=" + PLACE.placeId;
+
+  if (e) e.preventDefault();
+  if (iOS){
+    location.href = "https://maps.apple.com/?daddr=" + encodeURIComponent(hasLL ? ll : q) +
+                    "&q=" + encodeURIComponent(PLACE.name) + "&dirflg=d";
+  } else {
+    /* if no map app takes the geo: link, fall back to Google Maps on the web */
+    const t = setTimeout(()=>{ if (!document.hidden) location.href = web; }, 1500);
+    document.addEventListener("visibilitychange", ()=>clearTimeout(t), {once:true});
+    location.href = "geo:0,0?q=" + encodeURIComponent(hasLL ? ll + "(" + PLACE.name + ")" : q);
+  }
+  return false;
+}
 
 const HR_SUF = {0:"da",1:"de",2:"de",3:"te",4:"te",5:"te",6:"da",7:"de",8:"de",9:"da",10:"da",11:"de",
                 12:"de",13:"te",14:"te",15:"te",16:"da",17:"de",18:"de",19:"da",20:"de",21:"de",22:"de",23:"te"};
