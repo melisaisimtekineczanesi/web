@@ -142,6 +142,13 @@ body.xmas .sprig .xdeco{display:inline}
 /* snow caps on the cards in winter & christmas */
 body[data-season="winter"] .stack,body[data-season="winter"] .block,body[data-season="winter"] .invite,
 body.xmas .stack,body.xmas .block,body.xmas .invite{position:relative}
+body[data-season="winter"] .promo::before,body.xmas .promo::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:13px;z-index:2;pointer-events:none;
+  background:
+    radial-gradient(circle at 12px 0, #fff 10px, transparent 10.5px) 0 0/24px 13px repeat-x,
+    radial-gradient(circle at 0 0, #fff 6px, transparent 6.5px) 12px 0/24px 9px repeat-x;
+  filter:drop-shadow(0 1px 1px rgba(80,120,150,.18));
+}
 body[data-season="winter"] .invite::before,body[data-season="winter"] .stack::before,body[data-season="winter"] .block::before,
 body.xmas .invite::before,body.xmas .stack::before,body.xmas .block::before{
   content:"";position:absolute;left:0;right:0;top:0;height:13px;z-index:2;pointer-events:none;
@@ -304,6 +311,66 @@ main{position:relative;z-index:1;margin-top:16px}
 }
 .duty-cta svg{width:15px;height:15px;display:block}
 .duty-cta i{font-style:normal;opacity:.85}
+
+/* ---------- anniversary campaigns ---------- */
+.promo{
+  display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#FFFCF4 0%, #F8EFDC 100%);
+  border:1px solid #E6D3A8;border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);padding:17px 16px 16px;
+  animation:rise .6s .46s both;transition:transform .2s,box-shadow .2s;
+}
+.promo[hidden]{display:none}
+.duty:not([hidden]) ~ .promo,.notice:not([hidden]) ~ .promo{margin-top:12px}
+.promo:active{transform:scale(.985)}
+@media(hover:hover){.promo:hover{transform:translateY(-3px)}}
+.promo-head{display:flex;align-items:center;gap:9px}
+.promo-ic{
+  flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#5A4208;
+}
+.promo-ic svg{width:15px;height:15px;display:block}
+.promo-tag{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6A12}
+.promo-chip{
+  margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  background:#fff;border:1px solid #E6D3A8;color:#8A6A12;
+  padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.promo h2{
+  font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:21px;line-height:1.22;
+  letter-spacing:-.012em;color:var(--s-title);margin:12px 2px 12px;
+}
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.offer{
+  position:relative;overflow:hidden;border-radius:16px;padding:14px 13px 14px;color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22), 0 6px 14px rgba(40,40,20,.14);
+}
+.offer.o1{background:linear-gradient(145deg,#7F8A54 0%, #556036 100%)}
+.offer.o2{background:linear-gradient(145deg,#B07486 0%, #7C4558 100%)}
+.offer::after{
+  content:"";position:absolute;right:-26px;top:-26px;width:84px;height:84px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.26),transparent 68%);pointer-events:none;
+}
+.offer .pct{
+  font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:40px;line-height:1;
+  letter-spacing:-.02em;color:#fff;
+}
+.offer .off{
+  display:block;margin-top:2px;font-family:'Fraunces',Georgia,serif;font-style:italic;
+  font-size:16px;color:#FBEFC9;
+}
+.offer p{margin-top:9px;font-size:12.5px;font-weight:500;line-height:1.4;color:rgba(255,255,255,.94)}
+.offer p b{font-weight:700;color:#fff}
+.promo-foot{display:flex;align-items:center;gap:10px;margin-top:13px;flex-wrap:wrap}
+.promo-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;font-weight:700;font-size:13px;
+  padding:10px 16px;border-radius:999px;
+}
+.promo-cta svg{width:15px;height:15px;display:block}
+.promo-cta i{font-style:normal;opacity:.85}
+.promo-left{margin-left:auto;font-size:12px;font-weight:700;color:#8A6A12}
+@media(max-width:340px){.promo-grid{grid-template-columns:1fr}}
 
 /* ---------- review invitation ---------- */
 .invite{
@@ -501,7 +568,7 @@ body.xmas{
 a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  header,h1,.eyebrow,.festive,.status,.status-sub,.duty,.notice,.invite,.stack,.block,footer{opacity:1}
+  header,h1,.eyebrow,.festive,.status,.status-sub,.duty,.notice,.promo,.invite,.stack,.block,footer{opacity:1}
 }
 </style>
 </head>
@@ -596,6 +663,37 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
           <span data-i="noticeCta">Acil durumlar için arayın</span><i>→</i>
         </span>
+      </div>
+    </a>
+
+    <!-- 1st anniversary campaigns, hidden automatically after CAMPAIGN.to -->
+    <a class="promo" id="promo" href="https://wa.me/message/HW5ZDPIMJCX6F1" target="_blank" rel="noopener" hidden>
+      <div class="promo-head">
+        <span class="promo-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-2.2c.13-.4.2-.8.2-1.25C18 3.68 16.32 2 14.25 2c-.95 0-1.7.4-2.25 1-.55-.6-1.3-1-2.25-1C7.68 2 6 3.68 6 5.75c0 .45.07.85.2 1.25H4a2 2 0 00-2 2v2a1 1 0 001 1h8V7h2v5h8a1 1 0 001-1V9a2 2 0 00-2-2zM9.75 7C9.06 7 8 6.44 8 5.75S8.56 4 9.75 4C10.44 4 11 4.56 11 5.75V7H9.75zm4.5 0H13V5.75C13 4.56 13.56 4 14.25 4 15.44 4 16 5.06 16 5.75S14.94 7 14.25 7zM3 14v6a2 2 0 002 2h6v-8H3zm10 8h6a2 2 0 002-2v-6h-8v8z"/></svg>
+        </span>
+        <span class="promo-tag" data-i="promoTag">1. YILIMIZA ÖZEL</span>
+        <span class="promo-chip" id="promoChip"></span>
+      </div>
+      <h2 data-i="promoTitle">Birinci yılımızı sizinle kutluyoruz</h2>
+      <div class="promo-grid">
+        <div class="offer o1">
+          <div class="pct" data-i="promoPct1">%15</div>
+          <span class="off" data-i="promoOff">indirim</span>
+          <p id="promo1"></p>
+        </div>
+        <div class="offer o2">
+          <div class="pct" data-i="promoPct2">%20</div>
+          <span class="off" data-i="promoOff">indirim</span>
+          <p id="promo2"></p>
+        </div>
+      </div>
+      <div class="promo-foot">
+        <span class="promo-cta">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i="promoCta">Bilgi için yazın</span><i>→</i>
+        </span>
+        <span class="promo-left" id="promoLeft"></span>
       </div>
     </a>
 
@@ -727,6 +825,14 @@ const T = {
     noticeCta:"Acil durumlar için arayın",
     leaveDetail:"31 Ağustos Pazartesi yeniden açılıyoruz",
     leaveTag:"YILLIK İZİN",
+    promoTag:"1. YILIMIZA ÖZEL",
+    promoTitle:"Birinci yılımızı sizinle kutluyoruz",
+    promoPct1:"%15", promoPct2:"%20", promoOff:"indirim",
+    promo1:"Tüm kozmetik markalarımızın <b>seçili ürünlerinde</b>",
+    promo2:"<b>Purest</b> markasının tüm ürünlerinde",
+    promoCta:"Bilgi için yazın",
+    promoUntil:"SON GÜN", promoLast:"Bugün son gün",
+    promoLeft:n=>"Son " + n + " gün",
     reviewTitle:"Deneyiminizi bizimle paylaşın",
     reviewSub:"Hizmetimizden memnun kaldıysanız, Google'da bırakacağınız kısa bir değerlendirme bize çok değer katar ve daha fazla kişiye ulaşmamızı sağlar.",
     reviewBtn:"Bizi değerlendirin",
@@ -767,6 +873,14 @@ const T = {
     noticeCta:"Call us in an emergency",
     leaveDetail:"reopens Monday 31 August",
     leaveTag:"ANNUAL LEAVE",
+    promoTag:"1ST ANNIVERSARY",
+    promoTitle:"Celebrating our first year with you",
+    promoPct1:"15%", promoPct2:"20%", promoOff:"off",
+    promo1:"<b>Selected products</b> from all our cosmetics brands",
+    promo2:"All <b>Purest</b> products",
+    promoCta:"Message us for details",
+    promoUntil:"ENDS", promoLast:"Last day today",
+    promoLeft:n=>n + " days left",
     reviewTitle:"Share your experience with us",
     reviewSub:"If you were happy with our service, a short review on Google means a great deal to us and helps more people find the pharmacy.",
     reviewBtn:"Review us",
@@ -803,8 +917,12 @@ const HOURS = [
 const THU_SUMMER = { from:"05-14", to:"10-01", hours:["08:00","13:30"] };
 
 /* christmas / new year theme, inclusive MM-DD range (crosses the year end).
-   outside this range the normal season is used (december/jan/feb = winter). */
-const XMAS = { from:"12-20", to:"01-06" };
+   14 Kasım – 7 Ocak arası yılbaşı teması her zaman önceliklidir;
+   8 Ocak'tan itibaren normal mevsime (kış) döner. */
+const XMAS = { from:"11-14", to:"01-07" };
+
+/* 1. yıl kampanyaları: "to" (dahil, YYYY-MM-DD) tarihinden sonra kart kendiliğinden gizlenir. */
+const CAMPAIGN = { to:"2026-11-30" };
 
 /* annual leave: inclusive range, YYYY-MM-DD.
    the notice hides itself automatically after "back". */
@@ -873,6 +991,7 @@ function setLang(l){
     const k = el.getAttribute("data-i");
     if (T[l][k]) el.textContent = T[l][k];
   });
+  renderPromo();
   renderHours();
   renderStatus();
   renderDuty();
@@ -904,6 +1023,20 @@ function hoursFor(d){
 function renderNotice(){
   const el = document.getElementById("notice");
   el.hidden = ymd(nowLocal()) > LEAVE.back;
+}
+
+/* show the campaign card until its last day (inclusive), with the days left */
+function renderPromo(){
+  const el = document.getElementById("promo");
+  const n = nowLocal(), t = T[lang];
+  const [y,m,d] = CAMPAIGN.to.split("-").map(Number);
+  const left = Math.round((new Date(y,m-1,d) - new Date(n.getFullYear(),n.getMonth(),n.getDate())) / 86400000);
+  el.hidden = left < 0;
+  if (left < 0) return;
+  document.getElementById("promo1").innerHTML = t.promo1;
+  document.getElementById("promo2").innerHTML = t.promo2;
+  document.getElementById("promoChip").textContent = t.promoUntil + " " + d + " " + t.months[m-1];
+  document.getElementById("promoLeft").textContent = left === 0 ? t.promoLast : t.promoLeft(left + 1);
 }
 
 /* show the duty alert only on duty days */
@@ -1139,7 +1272,7 @@ applySeason();
   const primary = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
   setLang(primary.toLowerCase().startsWith("tr") ? "tr" : "en");
 })();
-setInterval(()=>{ renderStatus(); renderNotice(); renderDuty(); renderHours(); applySeason(); }, 60000);
+setInterval(()=>{ renderStatus(); renderNotice(); renderDuty(); renderPromo(); renderHours(); applySeason(); }, 60000);
 </script>
 </body>
 </html>
