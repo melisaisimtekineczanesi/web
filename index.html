@@ -160,7 +160,11 @@ body.xmas .invite::before,body.xmas .stack::before,body.xmas .block::before{
   filter:drop-shadow(0 1px 1px rgba(80,120,150,.18));
 }
 
-.garland{display:none;max-width:340px;margin:14px auto 0}
+.garland{display:none;max-width:340px;margin:30px auto 0}
+.garland .fig{transform-box:fill-box;transform-origin:50% 100%;animation:figSway 3.4s ease-in-out infinite}
+.garland .fig.f2{animation-delay:-1.7s}
+.garland .nose{animation:twinkle 1.6s ease-in-out infinite;filter:drop-shadow(0 0 2.5px #FF4A55)}
+@keyframes figSway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
 body.xmas .garland{display:block}
 .garland svg{width:100%;height:auto;display:block;overflow:visible}
 .garland .bulb{animation:twinkle 1.8s ease-in-out infinite;filter:drop-shadow(0 0 3px currentColor)}
@@ -1291,6 +1295,30 @@ function renderParticles(season){
   }
   [[9,8],[291,8]].forEach(([x,y])=>{
     s += `<g transform="translate(${x} ${y})"><path d="M0 0C-9-8-11 4 0 0C9-8 11 4 0 0Z" fill="#C8303A"/><path d="M0 0l-4 9 3-2zM0 0l4 9-3-2z" fill="#A3232C"/><circle r="2" fill="#E9BE4A"/></g>`;
+  });
+  /* santa and his reindeer sitting on the garland */
+  const santa =
+    `<path d="M-8.5 1 Q-10 -10 0 -11 Q10 -10 8.5 1Z" fill="#C8303A"/>` +
+    `<rect x="-8.6" y="-4.6" width="17.2" height="2.4" fill="#2B2B2B"/><rect x="-1.9" y="-5.2" width="3.8" height="3.6" rx=".6" fill="none" stroke="#E9BE4A" stroke-width="1"/>` +
+    `<circle cx="-9.2" cy="-3.4" r="2.1" fill="#fff"/><circle cx="9.2" cy="-3.4" r="2.1" fill="#fff"/>` +
+    `<circle cy="-15.5" r="6.2" fill="#F6D2B8"/>` +
+    `<path d="M-6.6 -16 Q-8 -5 0 -3.6 Q8 -5 6.6 -16 Q3.4 -12 0 -12.6 Q-3.4 -12 -6.6 -16Z" fill="#fff"/>` +
+    `<circle cx="-2.3" cy="-16.6" r=".85" fill="#3A2A22"/><circle cx="2.3" cy="-16.6" r=".85" fill="#3A2A22"/>` +
+    `<circle cx="-4" cy="-14.6" r="1.1" fill="#F2A9A0" opacity=".7"/><circle cx="4" cy="-14.6" r="1.1" fill="#F2A9A0" opacity=".7"/>` +
+    `<circle cy="-14.1" r="1.35" fill="#E58E80"/>` +
+    `<path d="M-6.4 -19 Q-2.5 -30 7 -26 Q10.5 -24.4 10.6 -20.6 L7.4 -21.4 Q5.6 -23.2 6.4 -19Z" fill="#C8303A"/>` +
+    `<rect x="-7.3" y="-21" width="14.6" height="3.4" rx="1.7" fill="#fff"/><circle cx="10.4" cy="-19.6" r="2.2" fill="#fff"/>`;
+  const deer =
+    `<path d="M-8 1 Q-9.5 -9 0 -10 Q9.5 -9 8 1Z" fill="#A9713F"/><ellipse cy="-2.6" rx="4" ry="3.6" fill="#E3C19A"/>` +
+    `<g stroke="#7A4E24" stroke-width="1.5" stroke-linecap="round" fill="none"><path d="M-3.2 -20.5 L-5.6 -28 M-4.4 -24.4 L-8.2 -25.6 M-5.2 -26.6 L-3.4 -29.4"/><path d="M3.2 -20.5 L5.6 -28 M4.4 -24.4 L8.2 -25.6 M5.2 -26.6 L3.4 -29.4"/></g>` +
+    `<ellipse cx="-6.6" cy="-18.6" rx="2.8" ry="1.7" transform="rotate(28 -6.6 -18.6)" fill="#A9713F"/><ellipse cx="6.6" cy="-18.6" rx="2.8" ry="1.7" transform="rotate(-28 6.6 -18.6)" fill="#A9713F"/>` +
+    `<ellipse cy="-15" rx="5.8" ry="6.3" fill="#B8804A"/><ellipse cy="-11.6" rx="3.9" ry="3" fill="#E3C19A"/>` +
+    `<circle cx="-2.4" cy="-16.6" r=".9" fill="#3A2A22"/><circle cx="2.4" cy="-16.6" r=".9" fill="#3A2A22"/>` +
+    `<circle class="nose" cy="-12.3" r="2" fill="#E0303A"/><circle cx="-.6" cy="-12.9" r=".55" fill="#fff" opacity=".8"/>` +
+    `<path d="M-5.6 -9 Q0 -6.6 5.6 -9 L5.6 -6.8 Q0 -4.4 -5.6 -6.8Z" fill="#C8303A"/><circle cy="-5" r="1.5" fill="#E9BE4A"/>`;
+  [[.3,santa,""],[.7,deer," f2"]].forEach(([t,g,c])=>{
+    const [x,y] = P(t);
+    s += `<g transform="translate(${x.toFixed(1)} ${(y-1).toFixed(1)}) scale(1.12)"><g class="fig${c}">${g}</g></g>`;
   });
   document.getElementById("garland").innerHTML = s + `</svg>`;
 })();
