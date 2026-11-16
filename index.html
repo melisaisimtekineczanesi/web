@@ -65,10 +65,11 @@ body{
 /* ---------- christmas theme ---------- */
 body.xmas{
   background:
-    radial-gradient(720px 340px at 50% -140px, rgba(200,48,58,.22), transparent 72%),
-    radial-gradient(440px 320px at 88% 76%, rgba(46,125,79,.14), transparent 72%),
-    radial-gradient(380px 300px at 6% 42%, rgba(243,207,103,.18), transparent 72%),
-    linear-gradient(170deg,#EFE8E3 0%, #F1ECE3 48%, #E7EBE3 100%);
+    radial-gradient(760px 380px at 50% -140px, rgba(200,48,58,.34), transparent 72%),
+    radial-gradient(480px 360px at 92% 78%, rgba(31,107,62,.24), transparent 72%),
+    radial-gradient(420px 320px at 4% 40%, rgba(243,207,103,.26), transparent 72%),
+    radial-gradient(420px 320px at 0% 100%, rgba(200,48,58,.16), transparent 72%),
+    linear-gradient(170deg,#F3E4DF 0%, #F4ECDF 48%, #E3ECE1 100%);
   background-attachment:fixed;
 }
 body[data-season="spring"]{
@@ -159,11 +160,43 @@ body.xmas .invite::before,body.xmas .stack::before,body.xmas .block::before{
   filter:drop-shadow(0 1px 1px rgba(80,120,150,.18));
 }
 
-.garland{display:none;max-width:280px;margin:18px auto -2px}
+.garland{display:none;max-width:340px;margin:14px auto 0}
 body.xmas .garland{display:block}
 .garland svg{width:100%;height:auto;display:block;overflow:visible}
 .garland .bulb{animation:twinkle 1.8s ease-in-out infinite;filter:drop-shadow(0 0 3px currentColor)}
 @keyframes twinkle{0%,100%{opacity:1}50%{opacity:.35}}
+/* ---------- christmas-only touches ---------- */
+body.xmas h1{color:#7E1A20}
+body.xmas .festive{
+  display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px;
+  font-style:italic;font-size:17px;
+}
+body.xmas .festive::before,body.xmas .festive::after{content:"✦";font-style:normal;font-size:11px;color:#C9A33A}
+body.xmas .status{border-color:#E6D3A8}
+/* candy-cane band on the cards */
+body.xmas .stack,body.xmas .block{box-shadow:var(--shadow)}
+body.xmas .stack::after,body.xmas .block::after,body.xmas .promo::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:5px;pointer-events:none;
+  background:repeating-linear-gradient(135deg,#C8303A 0 9px,#fff 9px 18px);
+  border-radius:0 0 var(--radius) var(--radius);opacity:.9;
+}
+body.xmas .promo{border-color:#E2C56F;background:linear-gradient(180deg,#FFFDF6 0%, #FBF1DC 100%);padding-bottom:20px}
+body.xmas .promo-tag,body.xmas .promo-left{color:#8E1F27}
+body.xmas .promo-chip{color:#8E1F27;border-color:#E9C9C4}
+body.xmas .offer{box-shadow:inset 0 0 0 1.5px rgba(243,207,103,.75), 0 6px 14px rgba(60,20,20,.18)}
+body.xmas .offer.o1{background:linear-gradient(145deg,#2C8450 0%, #134A2A 100%)}
+body.xmas .offer.o2{background:linear-gradient(145deg,#D23B45 0%, #8E1F27 100%)}
+body.xmas .offer::after{
+  right:-4px;top:auto;bottom:-4px;width:62px;height:46px;border-radius:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 30'%3E%3Cg fill='%23ffffff' opacity='.3'%3E%3Cpath transform='rotate(-24 20 20)' d='M20 20 Q17 15 12 16 Q14 12 9 10 Q13 8 11 3 Q16 6 19 2 Q20 7 25 6 Q22 10 26 13 Q21 14 20 20Z'/%3E%3Cpath transform='rotate(58 20 20)' d='M20 20 Q17 15 12 16 Q14 12 9 10 Q13 8 11 3 Q16 6 19 2 Q20 7 25 6 Q22 10 26 13 Q21 14 20 20Z'/%3E%3C/g%3E%3Cg fill='%23F3CF67'%3E%3Ccircle cx='18' cy='22' r='2.6'/%3E%3Ccircle cx='23' cy='23.5' r='2.6'/%3E%3Ccircle cx='20.5' cy='18.5' r='2.4'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;
+}
+body.xmas .offer .off{color:#F3CF67}
+body.xmas .invite{box-shadow:var(--shadow-lg), inset 0 0 0 1.5px rgba(243,207,103,.55)}
+body.xmas .stars{text-shadow:0 0 8px rgba(243,207,103,.6)}
+.leafline .xtree{display:none}
+body.xmas .leafline .xleaf{display:none}
+body.xmas .leafline .xtree{display:block;width:20px;height:20px;color:#1F6B3E}
+
 .festive{
   margin-top:8px;font-family:'Fraunces',Georgia,serif;font-weight:500;
   font-size:16px;color:var(--s-acc);animation:rise .7s .3s both;
@@ -789,7 +822,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
   <footer>
     <div class="leafline">
       <span></span>
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22C4 16 4 6 12 2c8 4 8 14 0 20z"/></svg>
+      <svg class="xleaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22C4 16 4 6 12 2c8 4 8 14 0 20z"/></svg>
+      <svg class="xtree" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7.5 9H10l-4 5.5h3L5 20h14l-4-5.5h3L14 9h2.5z" fill="currentColor"/><rect x="10.7" y="20" width="2.6" height="3" fill="#8A5A2B"/><path d="M12 .6l.8 1.7 1.8.2-1.3 1.2.3 1.8L12 4.6l-1.6.9.3-1.8-1.3-1.2 1.8-.2z" fill="#E4B840"/><circle cx="10" cy="12" r="1" fill="#C8303A"/><circle cx="13.6" cy="16.6" r="1" fill="#F3CF67"/><circle cx="9.4" cy="17.6" r="1" fill="#C8303A"/></svg>
       <span></span>
     </div>
     <div class="addr" data-i="addr">Uğur Mumcu Caddesi, Karakum 99320, Girne</div>
@@ -1192,6 +1226,8 @@ const SHAPE = {
   flake: c=>`<g fill="none" stroke="${c}" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9.6 3.8 12 5.8l2.4-2M9.6 20.2 12 18.2l2.4 2"/></g>`,
   snow:  c=>`<circle cx="12" cy="12" r="6" fill="${c}"/>`,
   star:  c=>`<path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="${c}"/>`,
+  tree:  c=>`<path d="M12 2 7.5 8.5H10L5.5 14.5h3L4.5 20h15l-4-5.5h3L14 8.5h2.5z" fill="${c}"/><rect x="10.6" y="20" width="2.8" height="3" fill="#8A5A2B"/>`,
+  gift:  c=>`<rect x="3.5" y="9" width="17" height="12" rx="1.5" fill="${c}"/><rect x="2.5" y="6.5" width="19" height="4" rx="1" fill="${c}"/><rect x="10.6" y="6.5" width="2.8" height="14.5" fill="#F3CF67"/><path d="M12 6.5C9 1.5 5 4.5 12 6.5C15 1.5 19 4.5 12 6.5Z" fill="#F3CF67"/>`,
   bauble:c=>`<rect x="10" y="2" width="4" height="3.2" rx="1" fill="#C9A33A"/><circle cx="12" cy="13.5" r="8" fill="${c}"/><path d="M7.6 11 Q8.8 8.6 11.2 8.2" stroke="#fff" stroke-width="1.4" fill="none" opacity=".6" stroke-linecap="round"/>`
 };
 
@@ -1207,9 +1243,10 @@ const SEASONS = {
     ["leaf","#B5652A","#6E3A12"],["leaf","#D49A3A","#7A5A12"] ]},
   winter:{ count:40, snow:true, items:[
     ["flake","#9DBBD0"],["flake","#B3CADA"],["snow","#C4D7E4"],["snow","#A9C3D6"] ]},
-  xmas:{ count:40, snow:true, items:[
-    ["flake","#9DBBD0"],["flake","#B3CADA"],["snow","#C4D7E4"],
-    ["star","#E4B840"],["bauble","#C8303A"],["bauble","#2E7D4F"] ]}
+  xmas:{ count:46, snow:true, items:[
+    ["flake","#9DBBD0"],["flake","#B3CADA"],["snow","#C4D7E4"],["snow","#fff"],
+    ["star","#E4B840"],["star","#E4B840"],["bauble","#C8303A"],["bauble","#2E7D4F"],["bauble","#E4B840"],
+    ["tree","#1F6B3E"],["gift","#C8303A"],["gift","#1F6B3E"] ]}
 };
 
 function renderParticles(season){
@@ -1232,20 +1269,34 @@ function renderParticles(season){
   host.innerHTML = html;
 }
 
-/* christmas lights along a curved wire */
+/* christmas garland: fir branch along a curve, lights, and a bow at each end */
 (function(){
   const cols = ["#D8343F","#E9BE4A","#2E9A5B","#4F86D1"];
-  let s = `<svg viewBox="0 0 300 36"><path d="M0 4 Q150 34 300 4" stroke="#2F4A3A" stroke-width="1.4" fill="none"/>`;
-  for (let i=0;i<10;i++){
-    const t = .05 + i*.1, x = 300*t, y = 4 + 60*t*(1-t);
-    s += `<rect x="${(x-1.7).toFixed(1)}" y="${(y-.6).toFixed(1)}" width="3.4" height="3.2" rx=".7" fill="#2F4A3A"/>` +
-         `<ellipse class="bulb" cx="${x.toFixed(1)}" cy="${(y+7).toFixed(1)}" rx="3.4" ry="4.8" fill="${cols[i%4]}" color="${cols[i%4]}" style="animation-delay:${(i%3)*.6}s"/>`;
+  const greens = ["#1F6B3E","#2C8450","#17512F","#3C9161"];
+  const P = t => [300*t, 6 + 64*t*(1-t)];
+  let s = `<svg viewBox="0 0 300 44"><path d="M0 6 Q150 38 300 6" stroke="#5A3A1C" stroke-width="1.6" fill="none"/><g stroke-linecap="round" stroke-width="1.5">`;
+  for (let i=0;i<=110;i++){
+    const [x,y] = P(i/110);
+    [[-4.5,5.5],[4.5,5.5],[-3.5,-4],[3.5,-4],[0,7]].forEach((v,k)=>{
+      if ((i+k)%2) return;
+      const j = ((i*7+k*13)%5)/2.5 - 1;
+      s += `<path d="M${x.toFixed(1)} ${y.toFixed(1)}l${(v[0]+j).toFixed(1)} ${(v[1]+j).toFixed(1)}" stroke="${greens[(i+k)%4]}"/>`;
+    });
   }
+  s += `</g>`;
+  for (let i=0;i<11;i++){
+    const [x,y] = P(.07 + i*.086);
+    s += `<rect x="${(x-1.7).toFixed(1)}" y="${(y+3.4).toFixed(1)}" width="3.4" height="3.2" rx=".7" fill="#2F4A3A"/>` +
+         `<ellipse class="bulb" cx="${x.toFixed(1)}" cy="${(y+11).toFixed(1)}" rx="3.6" ry="5" fill="${cols[i%4]}" color="${cols[i%4]}" style="animation-delay:${(i%3)*.6}s"/>`;
+  }
+  [[9,8],[291,8]].forEach(([x,y])=>{
+    s += `<g transform="translate(${x} ${y})"><path d="M0 0C-9-8-11 4 0 0C9-8 11 4 0 0Z" fill="#C8303A"/><path d="M0 0l-4 9 3-2zM0 0l4 9-3-2z" fill="#A3232C"/><circle r="2" fill="#E9BE4A"/></g>`;
+  });
   document.getElementById("garland").innerHTML = s + `</svg>`;
 })();
 
 /* browser bar colour per season */
-const THEME_COLOR = { spring:"#F3E9EE", summer:"#E9EBE2", autumn:"#F1E6D9", winter:"#E3EBF1", xmas:"#EFE8E3" };
+const THEME_COLOR = { spring:"#F3E9EE", summer:"#E9EBE2", autumn:"#F1E6D9", winter:"#E3EBF1", xmas:"#F3E4DF" };
 
 function renderFestive(){
   if (curSeason) document.getElementById("festive").textContent = T[lang].festive[curSeason];
